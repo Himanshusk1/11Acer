@@ -1,0 +1,174 @@
+:root {
+    --bh-green: #198754;
+    --bh-dark: #0f2d27;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+#loader-overlay,
+.loader-overlay {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+}
+
+section {
+    overflow-x: clip;
+}
+
+.row.auto-grid > [class*='col'] {
+    display: flex;
+}
+
+.row.auto-grid > [class*='col'] > * {
+    width: 100%;
+}
+
+.listing-card > img,
+.team-card > img,
+.city-card > img,
+.property-card > img,
+.res-card > img,
+.feature-card > img,
+.testimonial-card > img,
+.contact-card > img,
+.hero-card > img,
+.value-card > img,
+.mission-card > img,
+.card-img-top,
+.agent-profile-page .property-card img,
+.agent-profile-page .avatar-ring img,
+.agents-page .agent-card img.agent-avatar-img,
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+.hero-commercial,
+.res-hero,
+.hero-banner,
+.hero-contact,
+.agents-hero,
+.hero-section {
+    width: 100%;
+    overflow: hidden;
+}
+
+@media (max-width: 991.98px) {
+    .hero-commercial .row,
+    .res-hero .row,
+    .hero-banner .row,
+    .hero-contact .row,
+    .agents-hero .row,
+    .hero-section .row {
+        text-align: center;
+    }
+
+    .hero-commercial .d-flex,
+    .res-hero .d-flex,
+    .hero-banner .d-flex,
+    .hero-contact .d-flex,
+    .agents-hero .d-flex {
+        justify-content: center !important;
+    }
+
+    .filter-panel {
+        margin-top: 0;
+    }
+
+    .filter-card .row > [class*='col'] {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-commercial,
+    .res-hero,
+    .hero-banner,
+    .hero-contact,
+    .agents-hero,
+    .hero-section {
+        border-radius: 0 0 24px 24px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .cta-banner .row,
+    .contact-banner .row {
+        text-align: center;
+    }
+
+    .cta-banner .row > div,
+    .contact-banner .row > div {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .container,
+    .container-fluid {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .agents-page .hero-search {
+        flex-direction: column;
+        border-radius: 20px;
+    }
+
+    .agents-page .hero-search .btn-brand {
+        width: 100%;
+    }
+}
+
+.agents-page .hero-search {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.agents-page .hero-search input {
+    min-width: 0;
+}
+
+.cta-actions {
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.cta-actions > * {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+@media (max-width: 420px) {
+    .cta-actions {
+        gap: 0.5rem !important;
+    }
+    .cta-actions > * {
+        font-size: 0.9rem;
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }
+}

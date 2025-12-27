@@ -1,0 +1,290 @@
+.navbar-expand-lg .navbar-nav {
+  display: flex;
+  gap: 40px;
+  flex-direction: row;
+}
+
+#backToLoginFromOTP:hover {
+  background-color: #218838;
+  color: #ffffff;
+}
+
+
+.navbar-nav .nav-link {
+  font-weight: 500;
+  color: #000;
+  margin-right: 0px;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+  font-weight: 600;
+  color: #000;
+}
+
+.btn-get-started {
+  background-color: #28a745;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 18px;
+}
+
+.btn-get-started:hover {
+  background-color: #218838;
+  color: #fff;
+}
+
+html {
+  overflow-y: scroll;           /* keep vertical scrolling enabled */
+  overflow-x: hidden;           /* prevent horizontal overflow */
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE and Edge */
+}
+
+/* Hide scrollbars in WebKit-based browsers while keeping scroll functional */
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hero {
+  background: linear-gradient(135deg, #e8fbe8, #d4f5d4);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative shapes */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  background: rgba(0, 128, 0, 0.15);
+  border-radius: 50%;
+}
+
+.hero::before {
+  width: 250px;
+  height: 250px;
+  top: -80px;
+  left: -80px;
+}
+
+.hero::after {
+  width: 350px;
+  height: 350px;
+  bottom: -120px;
+  right: -120px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 30px;
+}
+
+.search-box {
+  max-width: 700px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+.search-box button {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  margin-left: 5px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-box button:hover {
+  background: #218838;
+}
+
+/* Modal Customization */
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.divider-or {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 15px 0;
+}
+
+.divider-or::before,
+.divider-or::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.divider-or:not(:empty)::before {
+  margin-right: .75em;
+}
+
+.divider-or:not(:empty)::after {
+  margin-left: .75em;
+}
+
+.email-btn {
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.75rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.email-btn:hover {
+  background: #f0f0f0;
+}
+
+.form-check-input:checked {
+  background-color: #28a745;
+  /* green */
+  border-color: #28a745;
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+  border-color: #28a745;
+}
+
+/* OTP Form Card */
+.card {
+  width: 100%;
+  border: none;
+  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.card h6 {
+  color: #28a745;
+  /* green instead of red */
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* OTP Input Fields */
+.inputs input {
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.inputs input:focus {
+  outline: none;
+  border: 2px solid #28a745;
+  /* green border */
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.4);
+}
+
+/* Validate Button */
+.validate {
+  border-radius: 20px;
+  height: 40px;
+  background-color: #28a745;
+  /* theme green */
+  border: 1px solid #28a745;
+  width: 140px;
+  color: #fff;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.validate:hover {
+  background-color: #218838;
+  /* darker green */
+  border-color: #218838;
+}
+
+/* Resend OTP Link */
+.card a {
+  color: #28a745;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.card a:hover {
+  color: #218838;
+  text-decoration: underline;
+}
+
+.role-btn {
+  background-color: #ffffff;
+  border: 1px solid #a3cfbb;
+  color: #146c43;
+  transition: all 0.2s ease;
+}
+
+.role-btn:hover,
+.btn-check:checked+.role-btn {
+  background-color: #198754;
+  color: #ffffff;
+  border-color: #198754;
+  box-shadow: 0 0 5px rgba(25, 135, 84, 0.5);
+}
+
+.btn-brand{
+  background: var(--brand);
+    border-color: var(--brand);
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 0.65rem 1.75rem;
+    font-weight: 600;
+    box-shadow: 0 18px 30px rgba(25, 135, 84, 0.25);
+}
+
+.btn-brand-outline {
+    border-radius: 999px;
+    border: 1.5px solid var(--brand);
+    color: var(--brand);
+    padding: 0.65rem 1.5rem;
+    font-weight: 600;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: #198754;;
+}
