@@ -32,7 +32,7 @@ class ResidentialLeadsController extends BaseController
 
         return view('admin/residential_leads', [
             'active'        => 'residential-leads',
-            'page_title'    => 'Residential Leads - Admin - 36 Broking Hub',
+            'page_title'    => 'Residential Leads - Admin - 11 Acer',
             'leads'         => $leads,
             'pager'         => $this->model->pager,
             'filters'       => ['status' => $statusFilter],

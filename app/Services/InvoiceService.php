@@ -7,7 +7,7 @@ use Mpdf\Mpdf;
 
 class InvoiceService
 {
-    private const SELLER_NAME = '36 Broking Hub';
+    private const SELLER_NAME = '11 Acer';
     private const SELLER_GSTIN = '23GKXPS6431Q1ZZ';
     private const SELLER_CONTACT = '9131747400';
     private const SELLER_ADDRESS = '255, New Jiwaji Nagar, Thatipur, Gwalior, MP – 474011';

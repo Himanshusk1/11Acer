@@ -37,7 +37,7 @@ class CommercialVisitsController extends BaseController
 
         return view('admin/commercial_visits', [
             'active'          => 'commercial-visits',
-            'page_title'      => 'Commercial Visits - Admin - 36 Broking Hub',
+            'page_title'      => 'Commercial Visits - Admin - 11 Acer',
             'visits'          => $visits,
             'pager'           => $this->model->pager,
             'filters'         => [

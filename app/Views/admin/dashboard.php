@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Admin Dashboard - 36 Broking Hub';
+$page_title = 'Admin Dashboard - 11 Acer';
 ?>
 <!DOCTYPE html>
 <html lang="en">

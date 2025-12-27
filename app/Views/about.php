@@ -1,5 +1,5 @@
 <?php
-$page_title = 'About Us | 36 Broking Hub';
+$page_title = 'About Us | 11 Acer';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -176,7 +176,7 @@ $page_title = 'About Us | 36 Broking Hub';
                 <div class="row align-items-center">
                     <div class="col-xl-7">
                         <h1 class="display-4 fw-semibold mb-3">Elevating Residential & Commercial Real Estate Experiences</h1>
-                        <p class="lead mb-4">36 Broking Hub orchestrates data-backed advisory, curated inventory, and concierge-grade service for buyers, investors, and developers across India.</p>
+                        <p class="lead mb-4">11 Acer orchestrates data-backed advisory, curated inventory, and concierge-grade service for buyers, investors, and developers across India.</p>
                         <div class="d-flex flex-wrap gap-3">
                             <a href="<?= site_url('contact') ?>" class="btn btn-brand px-4 py-3">Discuss Your Requirement</a>
                             <a href="<?= site_url('services') ?>" class="btn btn-brand-outline px-4 py-3">Discover Our Services</a>
@@ -276,7 +276,7 @@ $page_title = 'About Us | 36 Broking Hub';
         <section class="container" id="why-choose">
             <div class="row mb-4">
                 <div class="col-lg-8" data-aos="fade-right">
-                    <h2 class="section-heading">Why Choose 36 Broking Hub</h2>
+                    <h2 class="section-heading">Why Choose 11 Acer</h2>
                     <p class="section-subtitle">We bring the perfect blend of prop-tech intelligence and boutique consulting.</p>
                 </div>
             </div>

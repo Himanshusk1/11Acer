@@ -1,5 +1,5 @@
     <?php
-    $page_title = '36 Broking Hub';
+    $page_title = '11 Acer';
     $request = service('request');
     $searchQuery = trim((string) $request->getGet('query'));
     $searchPropertyType = trim((string) $request->getGet('property_type'));
@@ -11,7 +11,7 @@
 
     <head>
         <?php include 'assets/includes/seo-meta.php'; ?>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="<?= base_url('CSS/style.css') ?>">
         <!-- Bootstrap Icons -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -38,16 +38,16 @@
             <div id="heroBackgroundCarousel" class="carousel slide carousel-fade hero-bg-carousel position-absolute top-0 start-0 w-100 h-100" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="false">
                 <div class="carousel-inner h-100">
                     <div class="carousel-item active h-100">
-                        <img src="<?= base_url('images/Green and White Modern Simple Minimalist Geometric Abstract Shape Real Esta_20251218_135405_0000_page-0001.jpg') ?>" class="d-block w-100 h-100 object-fit-cover" alt="Luxury penthouse exterior">
+                        <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1600&q=80" class="d-block w-100 h-100 object-fit-cover" alt="Luxury penthouse exterior">
                     </div>
                     <div class="carousel-item h-100">
-                        <img src="<?= base_url('images/Green and White Modern Simple Minimalist Geometric Abstract Shape Real Esta_20251218_135405_0000_page-0002.jpg') ?>" class="d-block w-100 h-100 object-fit-cover" alt="Modern residential skyline">
+                        <img src="https://images.unsplash.com/photo-1502003148287-a82ef80a6abc?auto=format&fit=crop&w=1600&q=80" class="d-block w-100 h-100 object-fit-cover" alt="Modern residential skyline">
                     </div>
                     <div class="carousel-item h-100">
-                        <img src="<?= base_url('images/Green and White Modern Simple Minimalist Geometric Abstract Shape Real Esta_20251218_135405_0000_page-0003.jpg') ?>" class="d-block w-100 h-100 object-fit-cover" alt="Contemporary home interior">
+                        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1600&q=80" class="d-block w-100 h-100 object-fit-cover" alt="Contemporary home interior">
                     </div>
                     <div class="carousel-item h-100">
-                        <img src="<?= base_url('images/Green and White Modern Simple Minimalist Geometric Abstract Shape Real Esta_20251218_135405_0000_page-0004.jpg') ?>" class="d-block w-100 h-100 object-fit-cover" alt="Contemporary home interior">
+                        <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1600&q=80" class="d-block w-100 h-100 object-fit-cover" alt="Modern living room">
                     </div>
                 </div>
             </div>
@@ -179,22 +179,6 @@
                         <div class="col-12 text-center" id="featured-properties-loading">
                             <div class="spinner-border text-success" role="status"></div>
                             <p class="mt-3">Loading featured properties...</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- DISCOVER DEALS SECTION -->
-            <section class="discover-deals-section py-5" data-aos="fade-up" data-aos-delay="440">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 mb-4 mb-lg-0">
-                            <h2 class="section-title" data-aos="fade-up" data-aos-delay="460">Discover the Best<br>Real Estate Deals</h2>
-                            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="480">Find your perfect home from a wide range of properties.</p>
-                        </div>
-                        <div class="col-lg-6">
-                            <img src="<?= base_url('images/Tracking Customers 3 Streamline Brooklyn.png') ?>" class="img-fluid rounded"
-                                alt="Real estate deals illustration" data-aos="zoom-in" data-aos-delay="520">
                         </div>
                     </div>
                 </div>
@@ -532,32 +516,6 @@
                 </div>
             </section>
 
-            <!-- CALL TO ACTION STRIP -->
-            <section class="cta-strip-section py-5" data-aos="fade-up" data-aos-delay="200">
-                <div class="container">
-                    <div class="row g-4">
-                        <div class="col-lg-6">
-                            <div class="cta-card gradient-green">
-                                <div>
-                                    <h3>Post Your Property for FREE</h3>
-                                    <p class="mb-0">Reach 1.5M active buyers & tenants instantly.</p>
-                                </div>
-                                <a href="<?= site_url('post-property') ?>" class="btn btn-light text-success fw-semibold">List Now</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="cta-card gradient-blue">
-                                <div>
-                                    <h3>Talk to an Expert Advisor</h3>
-                                    <p class="mb-0">Dedicated relationship managers for NRI & premium clients.</p>
-                                </div>
-                                <a href="tel:7575853652" class="btn btn-light text-primary fw-semibold">Call 7575853652</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <!-- RECENTLY VIEWED / RECOMMENDED -->
             <section class="recommended-section py-5" data-aos="fade-up" data-aos-delay="200">
                 <div class="container">
@@ -660,19 +618,6 @@
                 </div>
             </section>
         </main>
-        <div class="video-ad-card" id="videoAdCard" aria-live="polite">
-            <button type="button" class="video-ad-close" id="videoAdClose" aria-label="Close video preview">×</button>
-            <div class="video-ad-label">Featured walkthrough</div>
-            <p class="video-ad-title">Quick tour from our premium collection</p>
-            <video id="videoAdMedia" muted loop playsinline preload="metadata">
-                <source src="<?= base_url('videos/vidio_1.mp4') ?>" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-ad-footer">
-                <span>Tap to enable sound.</span>
-                <button type="button" class="video-ad-unmute" id="videoAdUnmute">Unmute</button>
-            </div>
-        </div>
         <?= $this->include('layouts/footer') ?>
 
         <script src="<?= base_url('js/script.js') ?>"></script>

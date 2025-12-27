@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Payments - Admin - 36 Broking Hub';
+$page_title = 'Payments - Admin - 11 Acer';
 $formatCurrency = function ($amount): string {
     return 'Rs ' . number_format((float) $amount, 0, '.', ',');
 };

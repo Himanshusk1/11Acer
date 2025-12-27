@@ -1,5 +1,5 @@
 <?php
-$page_title = 'User Dashboard - 36 Broking Hub';
+$page_title = 'User Dashboard - 11 Acer';
 $defaultProfileImage = base_url('images/36_profile.png');
 ?>
 <!DOCTYPE html>
@@ -1089,7 +1089,7 @@ $defaultProfileImage = base_url('images/36_profile.png');
                     key: orderData.razorpay_key,
                     amount: orderData.amount,
                     currency: orderData.currency,
-                    name: '36 Broking Hub',
+                    name: '11 Acer',
                     description: planName,
                     image: '<?= base_url('images/36_profile.png') ?>',
                     order_id: orderData.order_id,

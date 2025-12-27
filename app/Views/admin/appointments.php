@@ -1,5 +1,5 @@
 <?php
-$page_title = $page_title ?? 'Appointments - Admin - 36 Broking Hub';
+$page_title = $page_title ?? 'Appointments - Admin - 11 Acer';
 $appointments = $appointments ?? [];
 $metrics = array_merge([
     'total'     => 0,

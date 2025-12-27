@@ -1,5 +1,5 @@
 <?php
-$page_title = $page_title ?? 'Residential Leads - Admin - 36 Broking Hub';
+$page_title = $page_title ?? 'Residential Leads - Admin - 11 Acer';
 $allowedStatus = $allowedStatus ?? ['pending', 'contacted', 'converted', 'closed'];
 $metrics = $metrics ?? ['total' => 0, 'pending' => 0, 'contacted' => 0, 'converted' => 0, 'closed' => 0];
 $filters = $filters ?? ['status' => null];

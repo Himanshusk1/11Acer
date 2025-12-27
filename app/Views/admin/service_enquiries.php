@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Service Enquiries - Admin - 36 Broking Hub';
+$page_title = 'Service Enquiries - Admin - 11 Acer';
 $formatDateTime = static function (?string $value): string {
     if (! $value) {
         return '—';

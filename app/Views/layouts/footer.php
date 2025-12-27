@@ -8,7 +8,7 @@
                     <div class="text-center text-md-start">
                         <a href="/" class="footer-logo-link d-inline-block">
                             <img src="<?= base_url('images/PNG.png'); ?>"
-                                 alt="36 Broking Hub"
+                                 alt="11 Acer"
                                  class="footer-brand img-fluid rounded-3 shadow-sm"
                                  loading="lazy">
                         </a>

@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Property Details - 36 Broking Hub';
+$page_title = 'Property Details - 11 Acer';
 ?>
 <!DOCTYPE html>
 <html lang="en">

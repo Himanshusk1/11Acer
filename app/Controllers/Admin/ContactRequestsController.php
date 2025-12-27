@@ -30,7 +30,7 @@ class ContactRequestsController extends BaseController
 
         return view('admin/contact_requests', [
             'active'        => 'contact-requests',
-            'page_title'    => 'Contact Requests - Admin - 36 Broking Hub',
+            'page_title'    => 'Contact Requests - Admin - 11 Acer',
             'requests'      => $requests,
             'pager'         => $this->model->pager,
             'filters'       => ['status' => $statusFilter],

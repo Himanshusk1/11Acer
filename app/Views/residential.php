@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Residential Properties | 36 Broking Hub';
+$page_title = 'Residential Properties | 11 Acer';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -474,7 +474,7 @@ $page_title = 'Residential Properties | 36 Broking Hub';
             <div class="row mb-4">
                 <div class="col-lg-8" data-aos="fade-right">
                     <h2 class="section-heading">Trusted by Residential Buyers & Sellers</h2>
-                    <p class="section-subtitle">Stories from homeowners, investors, and NRI clients who discovered their dream residence with 36 Broking Hub.</p>
+                    <p class="section-subtitle">Stories from homeowners, investors, and NRI clients who discovered their dream residence with 11 Acer.</p>
                 </div>
             </div>
             <div class="row g-4 auto-grid row-cols-1 row-cols-md-2 row-cols-lg-3">

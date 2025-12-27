@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Sell or Rent Property - 36 Broking Hub';
+$page_title = 'Sell or Rent Property - 11 Acer';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -192,7 +192,7 @@ $page_title = 'Sell or Rent Property - 36 Broking Hub';
             <div class="row align-items-center justify-content-center g-5">
                 <div class="col-lg-6 hero-text" data-aos="fade-right">
                     <p class="text-uppercase text-muted fw-semibold mb-2">Agents & Owners</p>
-                    <h1>Grow faster with 36 Broking Hub</h1>
+                    <h1>Grow faster with 11 Acer</h1>
                     <p class="mt-3">Generate qualified leads, showcase premium inventory, and manage your clients from a single dashboard. Join thousands of verified partners already scaling with us.</p>
                     <ul class="list-unstyled mt-4 text-start">
                         <li class="d-flex align-items-center mb-2"><i class="bi bi-patch-check-fill text-success me-2"></i>Verified buyer network nationwide</li>
@@ -349,7 +349,7 @@ $page_title = 'Sell or Rent Property - 36 Broking Hub';
                 <div class="col-lg-6">
                     <div class="testimonial-card h-100">
                         <span class="text-warning fs-4">“</span>
-                        <p class="fs-5">Our closure rate jumped by 30% within the first quarter of onboarding with 36 Broking Hub. The OTP onboarding makes our field team lightning fast.</p>
+                        <p class="fs-5">Our closure rate jumped by 30% within the first quarter of onboarding with 11 Acer. The OTP onboarding makes our field team lightning fast.</p>
                         <div class="d-flex align-items-center mt-3">
                             <img src="<?= base_url('images/36_profile.png') ?>" class="rounded-circle me-3" alt="client" style="width: 50px;">
                             <div>

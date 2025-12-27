@@ -1,5 +1,5 @@
 <?php
-$page_title = $page_title ?? 'Feedback - Admin - 36 Broking Hub';
+$page_title = $page_title ?? 'Feedback - Admin - 11 Acer';
 $feedbackEntries = $feedbackEntries ?? [];
 $totalFeedback = count($feedbackEntries);
 $totalRating = 0;

@@ -1,7 +1,7 @@
 <?php
 $loaderId = isset($loaderId) && is_string($loaderId) ? trim($loaderId) : 'loader-overlay';
 $loaderMinDuration = isset($loaderMinDuration) && is_numeric($loaderMinDuration) ? (int) $loaderMinDuration : 1000;
-$defaultLogo = base_url('images/PNG.png');
+$defaultLogo = base_url('images/logo.jpg');
 $loaderLogo = isset($loaderLogo) && is_string($loaderLogo) && trim($loaderLogo) !== '' ? trim($loaderLogo) : $defaultLogo;
 $loaderMessage = isset($loaderMessage) && is_string($loaderMessage) && trim($loaderMessage) !== '' ? trim($loaderMessage) : 'Loading...';
 ?>
@@ -35,7 +35,7 @@ $loaderMessage = isset($loaderMessage) && is_string($loaderMessage) && trim($loa
     <div class="loader-spinner">
         <img src="<?= esc($loaderLogo) ?>" alt="Logo" height="60">
         <div class="spinner-border text-success" role="status" style="width: 3rem; height: 3rem;">
-            <span class="visually-hidden">Loading...</span>
+            <span class="visually-hidden">11 Acer Loading...</span>
         </div>
         <div class="mt-2 text-success fw-bold"><?= esc($loaderMessage) ?></div>
     </div>

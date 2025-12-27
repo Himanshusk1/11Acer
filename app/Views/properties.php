@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Property Listings - 36 Broking Hub';
+$page_title = 'Property Listings - 11 Acer';
 $request = service('request');
 $initialQuery = trim((string) $request->getGet('query'));
 $initialPropertyType = trim((string) $request->getGet('property_type'));

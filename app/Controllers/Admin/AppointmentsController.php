@@ -21,7 +21,7 @@ class AppointmentsController extends BaseController
 
         return view('admin/appointments', [
             'active'             => 'appointments',
-            'page_title'         => 'Appointments - Admin - 36 Broking Hub',
+            'page_title'         => 'Appointments - Admin - 11 Acer',
             'appointments'       => $appointments,
             'metrics'            => $metrics,
             'autoForwardEnabled' => $autoForwardEnabled,

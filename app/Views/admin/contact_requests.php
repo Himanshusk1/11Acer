@@ -1,5 +1,5 @@
 <?php
-$page_title = $page_title ?? 'Contact Requests - Admin - 36 Broking Hub';
+$page_title = $page_title ?? 'Contact Requests - Admin - 11 Acer';
 $allowedStatus = $allowedStatus ?? ['pending', 'in_progress', 'resolved', 'archived'];
 $filters = $filters ?? ['status' => null];
 $metrics = $metrics ?? ['total' => 0, 'pending' => 0, 'in_progress' => 0, 'resolved' => 0, 'archived' => 0];
@@ -21,7 +21,7 @@ $archiveRate = ($metrics['total'] ?? 0) > 0
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <?php
-    $page_title = $page_title ?? 'Contact Requests - Admin - 36 Broking Hub';
+    $page_title = $page_title ?? 'Contact Requests - Admin - 11 Acer';
     $allowedStatus = $allowedStatus ?? ['pending', 'in_progress', 'resolved', 'archived'];
     $filters = $filters ?? ['status' => null];
     $metrics = $metrics ?? ['total' => 0, 'pending' => 0, 'in_progress' => 0, 'resolved' => 0, 'archived' => 0];

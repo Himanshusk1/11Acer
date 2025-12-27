@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Commercial Real Estate | 36 Broking Hub';
+$page_title = 'Commercial Real Estate | 11 Acer';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +91,7 @@ $page_title = 'Commercial Real Estate | 36 Broking Hub';
                 <div class="row align-items-center g-4">
                     <div class="col-lg-7">
                         <h1 class="display-5 fw-bold mb-3">Unlock Growth with Grade-A Commercial Properties</h1>
-                        <p class="lead">36 Broking Hub curates high-performing office, retail, industrial and land assets across Indiawith data-backed advisory, seamless leasing and end-to-end transaction support.</p>
+                        <p class="lead">11 Acer curates high-performing office, retail, industrial and land assets across Indiawith data-backed advisory, seamless leasing and end-to-end transaction support.</p>
                         <div class="cta-actions d-flex gap-3 mt-4">
                             <a href="#listings" class="btn btn-brand">Explore Listings</a>
                             <a href="#schedule" class="btn btn-brand-outline">Book a Consultation</a>
@@ -381,7 +381,7 @@ $page_title = 'Commercial Real Estate | 36 Broking Hub';
                         <div class="row g-4 auto-grid row-cols-1">
                             <?php
                             $testimonials = [
-                                ['name'=>'Neha Kapoor','role'=>'Head of Workplace, Fintech Unicorn','quote'=>'36 Broking Hub completed our 120,000 sq.ft consolidation in under 90 days with zero downtime. Their fit-out and legal teams were priceless.'],
+                                ['name'=>'Neha Kapoor','role'=>'Head of Workplace, Fintech Unicorn','quote'=>'11 Acer completed our 120,000 sq.ft consolidation in under 90 days with zero downtime. Their fit-out and legal teams were priceless.'],
                                 ['name'=>'Ravi Menon','role'=>'Asset Manager, Institutional Fund','quote'=>'Their data-backed leasing program improved our NOI by 18% across three Grade-A IT parks. Exceptional tenant relationships.'],
                                 ['name'=>'Sanjay Tiwari','role'=>'Founder, D2C Logistics','quote'=>'From land acquisition to built-to-suit warehouse delivery, the CRE team handled every milestone seamlessly.'],
                             ];

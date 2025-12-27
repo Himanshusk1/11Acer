@@ -1,5 +1,5 @@
 <?php
-$page_title = '36 Broking Hub';
+$page_title = '11 Acer';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -193,7 +193,7 @@ $page_title = '36 Broking Hub';
                     <div class="col-lg-7">
                         <p class="text-uppercase text-success fw-semibold mb-2">Our Services</p>
                         <h1 class="display-5 fw-bold text-dark">Everything you need to move home with confidence.</h1>
-                        <p class="lead text-secondary mb-4">36 Broking Hub blends expert advisory, verified inventory and intelligent tools so buyers, tenants, owners and partners can make faster, smarter real estate decisions.</p>
+                        <p class="lead text-secondary mb-4">11 Acer blends expert advisory, verified inventory and intelligent tools so buyers, tenants, owners and partners can make faster, smarter real estate decisions.</p>
                         <div class="d-flex flex-wrap gap-3">
                             <div class="border rounded-4 px-4 py-3 bg-white shadow-sm" data-aos="fade-up" data-aos-delay="140">
                                 <div class="h4 mb-0 text-success">5k+</div>
@@ -277,7 +277,7 @@ $page_title = '36 Broking Hub';
             <div class="container">
                 <div class="text-center mb-4">
                     <p class="text-uppercase text-success fw-semibold mb-2">Why Choose Us</p>
-                    <h2 class="fw-bold text-dark">Trust the 36 Broking Hub advantage</h2>
+                    <h2 class="fw-bold text-dark">Trust the 11 Acer advantage</h2>
                 </div>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <?php foreach ($whyChoose as $index => $item): ?>

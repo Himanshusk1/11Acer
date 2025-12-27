@@ -1,5 +1,5 @@
 <?php
-$page_title = 'Agent Profile - 36 Broking Hub';
+$page_title = 'Agent Profile - 11 Acer';
 $isLoggedIn = session()->get('isLoggedIn');
 ?>
 <!DOCTYPE html>
