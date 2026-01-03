@@ -28,49 +28,32 @@
                     
                     <li class="nav-item">
                         <a class="nav-link <?= (isset($active_page) && $active_page == 'buyers') ? 'active' : '' ?>" href="<?= site_url('/properties') ?>">
-                            For Buyers
+                            Buyers
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link <?= (isset($active_page) && $active_page == 'commercial') ? 'active' : '' ?>" href="<?= site_url('commercial') ?>">Commercial</a>
+                        <a class="nav-link <?= (isset($active_page) && $active_page == 'commercial') ? 'active' : '' ?>" href="<?= site_url('commercial') ?>">Tenants</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= (isset($active_page) && $active_page == 'residential') ? 'active' : '' ?>" href="<?= site_url('residential') ?>">Residential</a>
+                        <a class="nav-link <?= (isset($active_page) && $active_page == 'residential') ? 'active' : '' ?>" href="<?= site_url('residential') ?>">Owner/Builder</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= (isset($active_page) && $active_page == 'services') ? 'active' : '' ?>" href="<?= site_url('services') ?>">Services</a>
+                        <a class="nav-link <?= (isset($active_page) && $active_page == 'services') ? 'active' : '' ?>" href="<?= site_url('services') ?>">Agents/Broker</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= (isset($active_page) && $active_page == 'about') ? 'active' : '' ?>" href="<?= site_url('about') ?>">About Us</a>
+                        <a class="nav-link <?= (isset($active_page) && $active_page == 'about') ? 'active' : '' ?>" href="<?= site_url('about') ?>">Construction Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= (isset($active_page) && $active_page == 'about') ? 'active' : '' ?>" href="<?= site_url('about') ?>">Insights</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= (isset($active_page) && $active_page == 'contact') ? 'active' : '' ?>" href="<?= site_url('contact') ?>">Contact</a>
-                    </li>
-                    
-                    <!-- Simple Dropdown for Agents -->
-                    <li class="nav-item has-megamenu">
-                        <a class="nav-link <?= (isset($active_page) && $active_page == 'agents') ? 'active' : '' ?>" href="<?= site_url('agents') ?>" role="button" data-mega-toggle="true" data-mega-target="#agentsMega" aria-controls="agentsMega" aria-expanded="false">
-                            Agents <i class="bi bi-chevron-down d-none d-lg-inline-block" style="font-size: 10px; margin-left:3px; vertical-align: middle;"></i>
-                        </a>
-                        <div class="mega-menu mega-agents mega-section" id="agentsMega" aria-hidden="true">
-                            <nav class="nav flex-column">
-                                <a href="<?= site_url('agents') ?>">Find an Agent</a>
-                                <a href="<?= site_url('agents/login') ?>">Agent Login</a>
-                                <a class="fw-bold text-primary" href="<?= site_url('agents/register') ?>">Join as Agent</a>
-                            </nav>
-                        </div>
                     </li>
                 </ul>
 
                 <!-- Right Side Actions -->
                 <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-3 mt-3 mt-lg-0" style="white-space: nowrap;">
-                    
-                    <!-- Post Property (Ghost Button) -->
-                    <a href="<?= site_url('post-property') ?>" class="btn-post-property text-decoration-none">
-                        <span class="badge bg-warning text-dark rounded-pill me-1" style="font-size: 0.65rem;">FREE</span>
-                        Post Property
-                    </a>
 
                     <!-- User / Login -->
                     <?php if (session()->get('isLoggedIn')): ?>
@@ -85,7 +68,7 @@
                             </ul>
                         </div>
                     <?php else: ?>
-                        <a href="#" class="btn btn-get-started" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loginModal">
                             Login / Register
                         </a>
                     <?php endif; ?>

@@ -288,3 +288,152 @@ body {
 .nav-link:focus, .nav-link:hover {
     color: #198754;;
 }
+/* ==============================
+   NEWSLETTER STRIP
+============================== */
+.newsletter-strip {
+    background: linear-gradient(90deg, #0f172a, #020617);
+    padding: 28px 0;
+    color: #ffffff;
+}
+
+.newsletter-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.newsletter-inner h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.newsletter-inner p {
+    font-size: 14px;
+    color: #9ca3af;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    width: 280px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: #1f2937;
+    color: #ffffff;
+}
+
+.newsletter-form button {
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    background: #22c55e;
+    color: #052e1c;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+.site-footer-v2 {
+    background: linear-gradient(180deg, #020617, #020617);
+    color: #e5e7eb;
+    padding: 70px 0 30px;
+}
+
+.footer-brand p {
+    font-size: 14px;
+    color: #9ca3af;
+    line-height: 1.6;
+}
+
+.brand-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.footer-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.footer-links,
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li,
+.footer-contact li {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer-links a {
+    color: #9ca3af;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #22c55e;
+}
+
+.footer-contact i {
+    margin-right: 8px;
+    color: #22c55e;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.social-icons a {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #1f2937;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+/* ==============================
+   FOOTER BOTTOM
+============================== */
+.footer-bottom {
+    border-top: 1px solid #1f2937;
+    margin-top: 40px;
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+}
+
+.footer-bottom-links a {
+    margin-left: 14px;
+    color: #9ca3af;
+    text-decoration: none;
+}
+
+.footer-bottom-links a:hover {
+    color: #22c55e;
+}

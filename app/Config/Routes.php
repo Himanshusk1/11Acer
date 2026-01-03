@@ -14,6 +14,7 @@ $routes->get('/post-property', 'UserController::postProperty');
 $routes->get('/post-your-property', 'UserController::postYourProperty', ['filter' => 'auth']);
 $routes->get('/properties', 'Home::properties');
 $routes->get('/property', 'Home::property');
+$routes->get('/temp', 'Home::temp');
 
 $routes->get('/commercial', 'Home::commercial');
 $routes->get('/residential', 'Home::residential');

@@ -105,6 +105,15 @@ class Home extends BaseController
         return view('properties');
     }
 
+    public function temp()
+    {
+        $data = [
+            'page_title'  => 'Temp Page',
+            'active_page' => 'buyers'
+        ];
+        return view('temp', $data);
+    }
+
     public function property()
     {
         $data = [
