@@ -308,7 +308,6 @@
         }
 
         .hero-search-card .btn-success {
-            border-radius: 999px;
             padding: 14px 22px;
             font-weight: 600;
             font-size: 1rem;
