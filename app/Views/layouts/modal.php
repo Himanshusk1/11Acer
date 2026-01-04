@@ -354,6 +354,18 @@
                             <input type="text" name="city" class="form-control" placeholder="Enter Your City" required />
                         </div>
                         <div class="mb-3">
+                            <label class="form-label" for="servicePreferenceSelect">Select a concierge service</label>
+                            <select class="form-select form-control" id="servicePreferenceSelect" name="service" required>
+                                <option value="" selected disabled>Select a service</option>
+                                <option value="home_loan_assistance">Home Loan Assistance</option>
+                                <option value="legal_documentation">Legal &amp; Documentation Services</option>
+                                <option value="vastu_consultation">Vastu Consultation</option>
+                                <option value="home_painting_cleaning">Home Painting &amp; Cleaning</option>
+                                <option value="repairs_utilities">Plumbing, Electrical &amp; Carpentry</option>
+                                <option value="construction_renovation">Home Construction &amp; Renovation</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">You are signing in as</label>
                             <div class="btn-group w-100 gap-2 flex-wrap" role="group" aria-label="User role selection">
                                 <input type="radio" class="btn-check" name="role" id="roleOwner" value="owner"
@@ -605,9 +617,17 @@ document.addEventListener("DOMContentLoaded", function() {
     registerForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         const formData = new FormData(registerForm);
+        registerErrorDiv.classList.add('d-none');
+        registerErrorDiv.textContent = '';
         const selectedRole = registerForm.querySelector('input[name="role"]:checked');
         if (!selectedRole) {
             registerErrorDiv.textContent = 'Please choose a role.';
+            registerErrorDiv.classList.remove('d-none');
+            return;
+        }
+        const selectedService = formData.get('service');
+        if (!selectedService) {
+            registerErrorDiv.textContent = 'Please select a concierge service.';
             registerErrorDiv.classList.remove('d-none');
             return;
         }

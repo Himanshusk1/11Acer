@@ -13,6 +13,14 @@ class AuthController extends ResourceController
 {
     protected $modelName = UserModel::class;
     protected $format    = 'json';
+    protected array $serviceOptions = [
+        'home_loan_assistance'   => 'Home Loan Assistance',
+        'legal_documentation'    => 'Legal & Documentation Services',
+        'vastu_consultation'     => 'Vastu Consultation',
+        'home_painting_cleaning' => 'Home Painting & Cleaning',
+        'repairs_utilities'      => 'Plumbing, Electrical & Carpentry',
+        'construction_renovation'=> 'Home Construction & Renovation',
+    ];
 
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
@@ -53,6 +61,7 @@ class AuthController extends ResourceController
             'phone_number' => $phoneRule,
             'city'         => 'required|max_length[100]',
             'role'         => 'required|in_list[owner,agent,buyer]',
+            'service'      => 'required|in_list[' . implode(',', array_keys($this->serviceOptions)) . ']',
         ];
 
         $validation = \Config\Services::validation();
@@ -62,12 +71,15 @@ class AuthController extends ResourceController
         }
 
         $role = $this->normalizeRole($input['role']);
+        $serviceKey = $input['service'] ?? '';
+        $serviceLabel = $this->serviceOptions[$serviceKey] ?? null;
         $data = [
             'full_name'    => $input['full_name'],
             'email'        => $input['email'],
             'phone_number' => $input['phone_number'],
             'city'         => $input['city'],
             'role'         => $role,
+            'service_preference' => $serviceLabel,
         ];
 
         $publicId = '';
@@ -105,6 +117,7 @@ class AuthController extends ResourceController
             'email'      => $user['email'],
             'phone_number' => $user['phone_number'],
             'public_id'  => $user['public_id'],
+            'service_preference' => $user['service_preference'] ?? null,
         ]);
 
         return $this->respondCreated([
@@ -113,6 +126,7 @@ class AuthController extends ResourceController
             'user_id'      => $userId,
             'public_id'    => $user['public_id'],
             'redirect_url' => role_dashboard_path($user['role']),
+            'service_preference' => $user['service_preference'] ?? null,
         ]);
     }
 
@@ -242,6 +256,7 @@ class AuthController extends ResourceController
             'email'      => $user['email'],
             'phone_number' => $user['phone_number'],
             'public_id'  => $user['public_id'],
+            'service_preference' => $user['service_preference'] ?? null,
         ]);
 
         $otpModel->delete($record['otp_id']);
@@ -261,6 +276,7 @@ class AuthController extends ResourceController
                 'role'         => $user['role'],
                 'public_id'    => $user['public_id'],
                 'city'         => $user['city'],
+                'service_preference' => $user['service_preference'] ?? null,
             ],
         ];
 
@@ -289,7 +305,7 @@ class AuthController extends ResourceController
     {
         $apiUrl = 'https://int.chatway.in/api/send-msg';
         $username = getenv('CHATWAY_USERNAME') ?: '36Brokinghub';
-        $token = getenv('CHATWAY_TOKEN') ?: 'bEQwd0s4NUUrMVFYMmtnOHhmU3dIQT09';
+        $token = getenv('CHATWAY_TOKEN') ?: 'bEQwd0s4NUUrMVFYMmtnOHhmU3dIQT08';
 
         $verifySslEnv = getenv('CHATWAY_VERIFY_SSL');
         $verifySsl = $verifySslEnv === false
@@ -381,7 +397,7 @@ class AuthController extends ResourceController
 
     protected function requiresProfileCompletion(array $user): bool
     {
-        $required = ['full_name', 'email', 'city', 'role'];
+        $required = ['full_name', 'email', 'city', 'role', 'service_preference'];
 
         foreach ($required as $field) {
             if (empty($user[$field])) {
