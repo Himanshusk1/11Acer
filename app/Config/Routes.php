@@ -25,6 +25,7 @@ $routes->get('/contact', 'ContactController::index');
 $routes->post('/contact/send', 'ContactController::sendMessage');
 $routes->get('/agents', 'Home::agents'); // Agents page ke liye
 $routes->get('/agents/profile', 'Agents::profile');
+$routes->get('/tenants', 'Tenants::index');
 // app/Config/Routes.php file mein yeh add karein
 
 $routes->get('agents/login', 'Agents::login', ['filter' => 'auth:guest']);

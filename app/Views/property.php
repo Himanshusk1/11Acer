@@ -18,40 +18,128 @@ $page_title = 'Property Details - 11 Acer';
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f5f7fb;
-            color: #1f2a37;
-            line-height: 1.6;
+        :root {
+            --page-background: #f4f6fb;
+            --section-muted: #eef3f1;
+            --card-background: #ffffff;
+            --card-dark: #0f2f23;
+            --text-primary: #1e293b;
+            --text-muted: #6b7a90;
+            --primary-700: #15803d;
+            --primary-600: #16a34a;
+            --primary-500: #22c55e;
+            --primary-400: #4ade80;
+            --accent-orange: #fb923c;
+            --accent-blue: #4f46e5;
+            --accent-pink: #ec4899;
+            --accent-purple: #8b5cf6;
+            --border-soft: rgba(15, 45, 35, 0.08);
+            --shadow-soft: 0 35px 75px -45px rgba(15, 45, 35, 0.6);
+            --radius-large: 32px;
+            --radius-medium: 24px;
+            --radius-regular: 20px;
         }
 
-        h1, h2, h3, h4, h5, h6 { font-weight: 700; }
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--page-background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        main {
+            padding: 90px 0 120px;
+        }
+
+        .main-content {
+            padding: 0;
+        }
+
+        .section-block {
+            margin-bottom: 3.5rem;
+        }
 
         .section-title {
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            color: #0f172a;
-            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 1.35rem;
         }
 
-        .main-content { padding: 2.5rem 0; }
-        .section-block { margin-bottom: 3rem; }
+        .property-hero {
+            position: relative;
+            padding: 0 0 4rem;
+        }
+
+        .property-hero::before,
+        .property-hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .property-hero::before {
+            width: 420px;
+            height: 420px;
+            top: -160px;
+            left: -200px;
+            background: radial-gradient(circle, rgba(74, 222, 128, 0.22) 0%, rgba(15, 53, 32, 0) 70%);
+            filter: blur(6px);
+        }
+
+        .property-hero::after {
+            width: 360px;
+            height: 360px;
+            bottom: -160px;
+            right: -160px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.18) 0%, rgba(15, 53, 32, 0) 70%);
+            filter: blur(4px);
+        }
 
         .hero-card {
-            background: #fff;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
-            padding: 1.75rem;
-            height: 100%;
+            position: relative;
+            background: var(--card-background);
+            border-radius: var(--radius-large);
+            box-shadow: var(--shadow-soft);
+            padding: clamp(28px, 3vw, 36px);
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(140deg, rgba(34, 197, 94, 0.18), rgba(15, 47, 35, 0.06));
+            z-index: 0;
         }
 
         #propertyCarousel {
-            border-radius: 20px;
+            border-radius: var(--radius-regular);
             overflow: hidden;
-            box-shadow: 0 30px 80px rgba(15, 23, 42, 0.18);
-            border: 1px solid rgba(99, 102, 241, 0.08);
+            box-shadow: 0 40px 90px -45px rgba(14, 40, 25, 0.75);
+            border: 1px solid rgba(15, 45, 35, 0.08);
+            position: relative;
+            z-index: 1;
         }
 
         #propertyCarousel .carousel-item img {
@@ -61,18 +149,18 @@ $page_title = 'Property Details - 11 Acer';
         }
 
         #propertyCarousel .carousel-indicators [data-bs-target] {
-            width: 4px;
-            height: 4px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.55);
             border: none;
             margin: 0 6px;
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, background 0.2s ease;
         }
 
         #propertyCarousel .carousel-indicators .active {
-            background: #cccccc6e;
-            transform: scale(1.3);
+            background: #ffffff;
+            transform: scale(1.25);
         }
 
         .carousel-control-prev,
@@ -82,106 +170,212 @@ $page_title = 'Property Details - 11 Acer';
             top: 50%;
             transform: translateY(-50%);
             border-radius: 50%;
-            border: 1px solid rgba(15, 23, 42, 0.08);
-            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.18);
+            border: 1px solid rgba(15, 45, 35, 0.15);
+            box-shadow: 0 15px 35px -18px rgba(15, 45, 35, 0.5);
+            backdrop-filter: blur(8px);
         }
 
-        .unit-options .btn-check + .btn {
+        .property-header {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin-top: 28px;
+        }
+
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
             border-radius: 999px;
-            border: 1px solid #dfe3eb;
-            color: #6c757d;
-            font-size: 0.9rem;
-            padding: 0.4rem 1.25rem;
-            background: #fff;
+            background: rgba(34, 197, 94, 0.18);
+            color: #f8fafc;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-size: 0.82rem;
         }
 
-        .unit-options .btn-check:checked + .btn {
-            background-color: #e1f7e6;
-            color: #198754;
-            border-color: #198754;
-            box-shadow: inset 0 0 0 1px rgba(25, 135, 84, 0.2);
+        .hero-pill i {
+            font-size: 1rem;
+        }
+
+        .property-title {
+            margin: 0;
+            color: #ffffff;
+            text-shadow: 0 26px 55px rgba(6, 28, 18, 0.55);
+            font-size: clamp(1.85rem, 3.4vw, 2.65rem);
+            line-height: 1.2;
+        }
+
+        .property-share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.6rem 1.35rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+            backdrop-filter: blur(6px);
+        }
+
+        .property-share-btn:hover,
+        .property-share-btn:focus {
+            background: rgba(34, 197, 94, 0.22);
+            color: #0b2216;
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px -24px rgba(74, 222, 128, 0.8);
+        }
+
+        .property-share-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .hero-meta {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .hero-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.55rem 1.15rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.16);
+            color: #f0fdf4;
+            font-weight: 500;
+            font-size: 0.88rem;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(6px);
+        }
+
+        .hero-meta-pill i {
+            color: var(--primary-400);
+        }
+
+        .property-id-pill {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.4rem 1rem;
+            border-radius: 12px;
+            background: rgba(15, 45, 35, 0.18);
+            color: #cff2dc;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 18px;
         }
 
         .price-highlight {
-            background: linear-gradient(135deg, #ffffff 0%, #effaf2 100%);
-            border-radius: 24px;
-            padding: 1.5rem 1.75rem;
-            box-shadow: 0 20px 55px rgba(15, 23, 42, 0.12);
-            border: 1px solid rgba(25, 135, 84, 0.15);
-            min-width: 260px;
+            position: relative;
+            border-radius: var(--radius-medium);
+            padding: 1.75rem 2rem;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(15, 45, 35, 0.04));
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            box-shadow: 0 35px 75px -42px rgba(15, 45, 35, 0.58);
+            overflow: hidden;
         }
 
-        .property-price-main { font-size: 2.1rem; color: #198754; }
-        .price-per-sqft { font-size: 0.95rem; color: #6c757d; }
+        .price-highlight::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.28), transparent 60%);
+            z-index: 0;
+        }
+
+        .price-highlight > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .price-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.88);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.45rem;
+            color: var(--primary-600);
+            box-shadow: 0 24px 48px -24px rgba(15, 45, 35, 0.6);
+        }
+
+        .property-price-main {
+            font-size: clamp(1.9rem, 3.5vw, 2.4rem);
+            font-weight: 700;
+            color: var(--primary-600);
+        }
+
+        .price-per-sqft {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
 
         .detail-card {
-            background: #fff;
-            border-radius: 20px;
-            border: 1px solid rgba(15, 23, 42, 0.05);
-            box-shadow: 0 15px 45px rgba(15, 23, 42, 0.08);
-            padding: 1.5rem;
+            position: relative;
+            background: linear-gradient(150deg, rgba(255, 255, 255, 0.96), rgba(244, 250, 246, 0.98));
+            border-radius: var(--radius-regular);
+            border: 1px solid rgba(15, 45, 35, 0.08);
+            box-shadow: 0 30px 70px -50px rgba(15, 45, 35, 0.7);
+            padding: 1.6rem;
             height: 100%;
-
-        .owner-card-fancy {
-            background: linear-gradient(135deg, rgba(25, 135, 84, 0.08), rgba(255, 255, 255, 0.85));
-            border: 1px solid rgba(25, 135, 84, 0.25);
-            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.15);
-            padding: 1.5rem;
-        }
-        }
-        .owner-card-fancy .owner-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.9rem;
-        }
-
-        .owner-card-fancy .owner-details {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-
-        .owner-card-fancy .owner-contact {
-            margin-top: 1rem;
-        }
-
-        .owner-card-fancy .badge-owner {
-            border-radius: 999px;
-            padding: 0.25rem 0.9rem;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            color: #0f5132;
-            background: rgba(25, 135, 84, 0.15);
-            text-transform: uppercase;
-        }
-
-        .owner-card-fancy .owner-avatar {
-            background: linear-gradient(135deg, #fff 0%, rgba(25, 135, 84, 0.2) 100%);
-            border: 2px solid rgba(25, 135, 84, 0.35);
         }
 
         .detail-item {
             display: flex;
-            gap: 0.85rem;
             align-items: center;
+            gap: 0.85rem;
+        }
+
+        .detail-item .icon-wrap {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(34, 197, 94, 0.12);
+            color: var(--primary-600);
+            font-size: 1.35rem;
         }
 
         .detail-item .icon {
-            font-size: 1.35rem;
-            color: #198754;
+            color: inherit;
         }
 
         .amenities-wrap {
-            background: linear-gradient(135deg, #ffffff 0%, #eff9ff 100%);
-            border-radius: 22px;
-            padding: 1.75rem;
-            border: 1px solid rgba(15, 23, 42, 0.04);
-            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(231, 253, 243, 0.98));
+            border-radius: var(--radius-regular);
+            padding: clamp(24px, 3vw, 32px);
+            border: 1px solid rgba(34, 197, 94, 0.16);
+            box-shadow: 0 28px 60px -45px rgba(15, 45, 35, 0.55);
         }
 
         #amenities-list .badge {
-            background: rgba(25, 135, 84, 0.12);
-            color: #198754;
+            background: rgba(34, 197, 94, 0.16);
+            color: var(--primary-700);
             border-radius: 999px;
             border: none;
             padding: 0.45rem 1.1rem;
@@ -190,40 +384,37 @@ $page_title = 'Property Details - 11 Acer';
         }
 
         #config-list .config-badge {
-            background: rgba(25, 135, 84, 0.12);
-            color: #1f2a37;
+            background: rgba(15, 45, 35, 0.06);
+            color: var(--text-primary);
             border-radius: 999px;
-            border: none;
+            border: 1px solid rgba(34, 197, 94, 0.16);
             padding: 0.45rem 1.15rem;
             font-weight: 600;
             font-size: 0.85rem;
             display: inline-flex;
             align-items: center;
-            gap: 0.35rem;
-            box-shadow: inset 0 0 0 1px rgba(25, 135, 84, 0.12);
-            white-space: normal;
-            line-height: 1.2;
+            gap: 0.4rem;
         }
 
         #config-list .config-badge .config-key {
-            color: #198754;
+            color: var(--primary-600);
             text-transform: capitalize;
         }
 
         #config-list .config-badge .config-value {
-            color: #0f172a;
+            color: var(--text-primary);
             font-weight: 500;
         }
 
         #config-list .badge-wrapper {
-            padding: 0.25rem;
+            padding: 0.3rem;
         }
 
         .floor-plan-card {
-            border-radius: 22px;
-            border: 1px solid rgba(15, 23, 42, 0.05);
-            box-shadow: 0 20px 55px rgba(15, 23, 42, 0.1);
-            background: #fff;
+            border-radius: var(--radius-regular);
+            border: 1px solid rgba(15, 45, 35, 0.08);
+            box-shadow: 0 28px 65px -48px rgba(15, 45, 35, 0.6);
+            background: var(--card-background);
         }
 
         .floor-plan-img {
@@ -233,151 +424,129 @@ $page_title = 'Property Details - 11 Acer';
             border-radius: 14px;
             border: 1px dashed rgba(60, 72, 88, 0.25);
             padding: 0.85rem;
-            background: #f9fafb;
+            background: rgba(243, 250, 247, 0.9);
         }
 
-        .cta-pill {
+        .contact-card {
+            position: relative;
+            border-radius: var(--radius-medium);
+            padding: clamp(24px, 3vw, 30px);
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(15, 45, 35, 0.08));
+            color: var(--text-primary);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            box-shadow: 0 32px 64px -44px rgba(15, 45, 35, 0.6);
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.4), transparent 60%);
+            z-index: 0;
+        }
+
+        .contact-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card .btn {
+            background: linear-gradient(135deg, #4ade80, #16a34a);
+            color: #062010;
             border-radius: 999px;
-            padding: 0.55rem 1.75rem;
-        }
-
-        .config-card {
-            border-radius: 18px;
-            border: 1px solid rgba(15, 23, 42, 0.05);
-            background: #fff;
-            padding: 1.25rem;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-            height: 100%;
-        }
-
-        .config-card small {
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
             font-weight: 600;
-            color: #94a3b8;
+            padding: 0.7rem 1rem;
+            border: none;
+            box-shadow: 0 18px 40px -20px rgba(74, 222, 128, 0.75);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .contact-card .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 24px 48px -22px rgba(74, 222, 128, 0.85);
+        }
+
+        .owner-card {
+            position: relative;
+            border-radius: var(--radius-regular);
+            border: 1px solid rgba(34, 197, 94, 0.22);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(229, 252, 241, 0.98));
+            padding: 1.6rem;
+            box-shadow: 0 26px 60px -42px rgba(15, 45, 35, 0.58);
+            overflow: hidden;
+        }
+
+        .owner-card .owner-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            background: rgba(34, 197, 94, 0.12);
+            color: var(--primary-600);
+            font-size: 1.1rem;
+        }
+
+        .owner-card .badge-owner {
+            border-radius: 999px;
+            padding: 0.3rem 0.9rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            background: rgba(34, 197, 94, 0.18);
+            color: var(--primary-700);
+        }
+
+        .owner-card .btn-outline-success {
+            border-radius: 999px;
+            border-color: rgba(34, 197, 94, 0.35);
+            color: var(--primary-600);
+        }
+
+        .owner-card .btn-outline-success:hover {
+            background: var(--primary-600);
+            border-color: var(--primary-600);
+            color: #ffffff;
         }
 
         .videos-wrap {
-            gap: 1.25rem !important;
+            gap: 1.35rem !important;
         }
 
-        .videos-wrap .card {
-            border-radius: 20px;
-            border: 1px solid rgba(15, 23, 42, 0.05);
-            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+        .video-card {
+            position: relative;
+            border-radius: var(--radius-regular);
+            border: 1px solid rgba(15, 45, 35, 0.08);
+            box-shadow: 0 28px 60px -44px rgba(15, 45, 35, 0.6);
+            background: var(--card-background);
+            overflow: hidden;
         }
 
-        .videos-wrap video { border-radius: 16px; }
+        .video-card .video-card-player {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: var(--radius-regular);
+        }
 
         .walkthrough-card {
-            border-radius: 20px;
-            background: linear-gradient(145deg, rgba(25, 135, 84, 0.08), rgba(15, 23, 42, 0.05));
-            border: 1px solid rgba(25, 135, 84, 0.25);
-            color: #0f172a;
-        }
-
-        .property-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .property-share-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            border-radius: 999px;
-            border: 1px solid #198754;
-            background: #fff;
-            color: #198754;
-            font-weight: 600;
-            padding: 0.55rem 1.15rem;
-            transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .property-share-btn:hover,
-        .property-share-btn:focus {
-            background: #198754;
-            color: #fff;
-            box-shadow: 0 10px 24px rgba(25, 135, 84, 0.25);
-        }
-
-        .property-share-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            box-shadow: none;
-        }
-
-        .property-share-btn i {
-            font-size: 1rem;
-        }
-
-        .share-modal .modal-content {
-            border-radius: 16px;
-            border: none;
-            box-shadow: 0 25px 70px rgba(12, 12, 20, 0.18);
-        }
-
-        .share-modal .modal-header {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .share-modal .modal-body {
-            padding-top: 0.5rem;
-        }
-
-        .share-link-group input {
-            border-top-left-radius: 999px;
-            border-bottom-left-radius: 999px;
-        }
-
-        .share-link-group .btn {
-            border-top-right-radius: 999px;
-            border-bottom-right-radius: 999px;
-        }
-
-        .share-actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 0.75rem;
-            margin-top: 1.25rem;
-        }
-
-        .share-chip {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            border-radius: 999px;
-            padding: 0.55rem 0.85rem;
-            text-decoration: none;
-            font-weight: 600;
-            border: 1px solid rgba(25, 135, 84, 0.2);
-            color: #18422d;
-            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-        }
-
-        .share-chip:hover {
-            background-color: #198754;
-            border-color: #198754;
-            color: #fff;
-        }
-
-        .share-chip i {
-            font-size: 1rem;
+            border-radius: var(--radius-regular);
+            background: linear-gradient(145deg, rgba(34, 197, 94, 0.14), rgba(8, 48, 30, 0.08));
+            border: 1px solid rgba(34, 197, 94, 0.22);
+            color: var(--text-primary);
+            box-shadow: 0 26px 60px -44px rgba(15, 45, 35, 0.58);
         }
 
         .walkthrough-link {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.85);
             border-radius: 999px;
-            padding: 0.4rem 1rem;
+            padding: 0.45rem 1rem;
             font-weight: 600;
-            color: #0f172a;
+            color: var(--text-primary);
             font-size: 0.85rem;
-            border: 1px solid rgba(15, 23, 42, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.18);
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
@@ -385,74 +554,77 @@ $page_title = 'Property Details - 11 Acer';
         }
 
         .walkthrough-link:hover {
-            background: #f1fff4;
-            border-color: #198754;
-            color: #198754;
-        }
-
-        .contact-card {
-            background: linear-gradient(135deg, #198754 0%, #38c172 85%);
-            color: #fff;
-            border-radius: 22px;
-            padding: 1.5rem;
-            box-shadow: 0 18px 45px rgba(25, 135, 84, 0.4);
-        }
-
-        .contact-card .btn {
-            background: #fff;
-            color: #198754;
-            border-radius: 999px;
-            font-weight: 600;
-            padding: 0.65rem 1rem;
-        }
-
-        .owner-card {
-            border-radius: 22px;
-            border: 1px solid rgba(15, 23, 42, 0.08);
-            box-shadow: 0 14px 40px rgba(15, 23, 42, 0.12);
-            background: #fff;
-            padding: 1.25rem;
-        }
-
-        .owner-card .owner-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 700;
-            background: rgba(25, 135, 84, 0.12);
-            color: #198754;
-        }
-
-        .owner-card .owner-contact a {
-            font-weight: 600;
+            background: var(--primary-600);
+            border-color: var(--primary-600);
+            color: #ffffff;
         }
 
         .property-listing-card {
-            border-radius: 22px;
-            border: 1px solid rgba(15, 23, 42, 0.04);
-            background: #fff;
+            position: relative;
+            border-radius: var(--radius-medium);
+            background: var(--card-background);
+            border: 1px solid rgba(15, 45, 35, 0.06);
             overflow: hidden;
-            box-shadow: 0 25px 65px rgba(15, 23, 42, 0.12);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
+            box-shadow: 0 38px 80px -44px rgba(15, 45, 35, 0.65);
+        }
+
+        .property-listing-card.ball-parent .hero-ball {
+            width: 200px;
+            height: 200px;
+            opacity: 0.55;
+            transition: transform 0.35s ease, opacity 0.35s ease;
+        }
+
+        .property-listing-card.ball-parent .hero-ball-top-right {
+            top: -85px;
+            right: -85px;
+            background: rgba(79, 70, 229, 0.16);
+        }
+
+        .property-listing-card.ball-parent .hero-ball-bottom-left {
+            bottom: -85px;
+            left: -85px;
+            background: rgba(74, 222, 128, 0.3);
         }
 
         .property-listing-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 35px 80px rgba(15, 23, 42, 0.18);
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 48px 95px -42px rgba(15, 45, 35, 0.7);
+        }
+
+        .property-listing-card:hover .hero-ball-top-right {
+            transform: translate(-12px, 12px) scale(1.07);
+        }
+
+        .property-listing-card:hover .hero-ball-bottom-left {
+            transform: translate(12px, -12px) scale(1.07);
+            opacity: 0.75;
         }
 
         .property-listing-card .card-img-top {
-            height: 200px;
+            height: 220px;
             object-fit: cover;
         }
 
-        .property-listing-card .card-body { padding: 1.4rem; }
+        .property-listing-card .card-body {
+            position: relative;
+            z-index: 2;
+            padding: 1.4rem;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 250, 246, 0.98));
+        }
 
-        .property-listing-card .card-title { font-size: 1.05rem; margin-bottom: 0.35rem; }
+        .property-listing-card .card-title {
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
+            font-weight: 600;
+        }
+
+        .property-listing-card .card-price {
+            font-weight: 700;
+            color: var(--primary-600);
+            margin-bottom: 0.35rem;
+        }
 
         .lightbox-overlay {
             position: fixed;
@@ -522,10 +694,17 @@ $page_title = 'Property Details - 11 Acer';
             transition: background 0.2s ease;
         }
 
-        .lightbox-nav:hover { background: rgba(255, 255, 255, 0.3); }
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
 
-        .lightbox-nav.prev { left: 1rem; }
-        .lightbox-nav.next { right: 1rem; }
+        .lightbox-nav.prev {
+            left: 1rem;
+        }
+
+        .lightbox-nav.next {
+            right: 1rem;
+        }
 
         .lightbox-close {
             position: absolute;
@@ -534,33 +713,238 @@ $page_title = 'Property Details - 11 Acer';
             z-index: 2;
         }
 
-        .lightbox-trigger { cursor: zoom-in; }
+        .lightbox-trigger {
+            cursor: zoom-in;
+        }
 
-        hr { color: #e2e8f0; margin: 2.75rem 0; }
+        hr {
+            color: rgba(15, 45, 35, 0.12);
+            margin: 2.75rem 0;
+        }
+
+        .ball-parent {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ball-parent>*:not(.hero-ball) {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-ball {
+            position: absolute;
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.9;
+            z-index: 0;
+        }
+
+        .hero-ball-top-right {
+            top: -70px;
+            right: -70px;
+            background: rgba(79, 70, 229, 0.2);
+        }
+
+        .hero-ball-bottom-left {
+            bottom: -80px;
+            left: -80px;
+            background: rgba(74, 222, 128, 0.28);
+        }
+
+        .contact-card .hero-ball-top-right,
+        .contact-card .hero-ball-bottom-left {
+            width: 150px;
+            height: 150px;
+            opacity: 0.7;
+        }
+
+        .contact-card .hero-ball-top-right {
+            top: -55px;
+            right: -55px;
+            background: rgba(79, 70, 229, 0.25);
+        }
+
+        .contact-card .hero-ball-bottom-left {
+            bottom: -65px;
+            left: -65px;
+            background: rgba(74, 222, 128, 0.35);
+        }
+
+        .owner-card .hero-ball-top-right,
+        .owner-card .hero-ball-bottom-left {
+            width: 160px;
+            height: 160px;
+            opacity: 0.6;
+        }
+
+        .owner-card .hero-ball-top-right {
+            top: -60px;
+            right: -60px;
+            background: rgba(79, 70, 229, 0.2);
+        }
+
+        .owner-card .hero-ball-bottom-left {
+            bottom: -60px;
+            left: -60px;
+            background: rgba(74, 222, 128, 0.25);
+        }
+
+        .price-highlight.ball-parent .hero-ball {
+            width: 180px;
+            height: 180px;
+            opacity: 0.65;
+        }
+
+        .price-highlight.ball-parent .hero-ball-top-right {
+            top: -70px;
+            right: -70px;
+            background: rgba(79, 70, 229, 0.18);
+        }
+
+        .price-highlight.ball-parent .hero-ball-bottom-left {
+            bottom: -75px;
+            left: -75px;
+            background: rgba(74, 222, 128, 0.28);
+        }
+
+        .detail-card.ball-parent .hero-ball,
+        .amenities-wrap.ball-parent .hero-ball,
+        .floor-plan-card.ball-parent .hero-ball,
+        .walkthrough-card.ball-parent .hero-ball {
+            width: 170px;
+            height: 170px;
+            opacity: 0.55;
+        }
+
+        .detail-card.ball-parent .hero-ball-top-right,
+        .floor-plan-card.ball-parent .hero-ball-top-right,
+        .walkthrough-card.ball-parent .hero-ball-top-right {
+            top: -70px;
+            right: -70px;
+            background: rgba(79, 70, 229, 0.18);
+        }
+
+        .detail-card.ball-parent .hero-ball-bottom-left,
+        .floor-plan-card.ball-parent .hero-ball-bottom-left,
+        .walkthrough-card.ball-parent .hero-ball-bottom-left {
+            bottom: -70px;
+            left: -70px;
+            background: rgba(74, 222, 128, 0.25);
+        }
+
+        .amenities-wrap.ball-parent .hero-ball-top-right {
+            top: -85px;
+            right: -85px;
+            background: rgba(79, 70, 229, 0.16);
+        }
+
+        .amenities-wrap.ball-parent .hero-ball-bottom-left {
+            bottom: -85px;
+            left: -85px;
+            background: rgba(74, 222, 128, 0.22);
+        }
+
+        .video-card.ball-parent .hero-ball {
+            width: 140px;
+            height: 140px;
+            opacity: 0.5;
+        }
+
+        .video-card.ball-parent .hero-ball-top-right {
+            top: -55px;
+            right: -55px;
+            background: rgba(79, 70, 229, 0.18);
+        }
+
+        .video-card.ball-parent .hero-ball-bottom-left {
+            bottom: -55px;
+            left: -55px;
+            background: rgba(74, 222, 128, 0.22);
+        }
+
+        .owner-card-fancy {
+            position: relative;
+        }
+
+        .owner-card-fancy::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(150deg, rgba(34, 197, 94, 0.14), rgba(255, 255, 255, 0.55));
+            opacity: 0.7;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .owner-card-fancy > * {
+            position: relative;
+            z-index: 1;
+        }
 
         @media (max-width: 1199px) {
-            .hero-card { padding: 1.5rem; }
+            .hero-card {
+                padding: 1.85rem;
+            }
         }
 
         @media (max-width: 991px) {
-            .main-content { padding: 1.75rem 0; }
-            .section-block { margin-bottom: 2.25rem; }
-            .hero-card { padding: 1.25rem; }
-            .price-highlight { width: 100%; }
+            main {
+                padding: 72px 0 100px;
+            }
+
+            .section-block {
+                margin-bottom: 2.5rem;
+            }
+
+            .property-hero::before {
+                left: -140px;
+            }
+
+            .property-hero::after {
+                right: -140px;
+            }
         }
 
         @media (max-width: 767px) {
-            body { font-size: 0.95rem; }
-            .price-highlight { padding: 1.1rem 1.25rem; }
-            .property-price-main { font-size: 1.7rem; }
-            #propertyCarousel .carousel-item img { height: 260px; }
+            body {
+                font-size: 0.95rem;
+            }
+
+            #propertyCarousel .carousel-item img {
+                height: 260px;
+            }
+
+            .hero-meta-pill {
+                width: 100%;
+            }
+
+            .price-highlight {
+                padding: 1.4rem;
+            }
         }
 
         @media (max-width: 575px) {
-            .hero-card { border-radius: 18px; }
-            .unit-options .btn-check + .btn { width: 100%; text-align: center; }
-            .price-highlight { flex-direction: column; align-items: flex-start; }
-            .videos-wrap video { height: 200px; }
+            .hero-card {
+                border-radius: 22px;
+            }
+
+            .contact-card {
+                border-radius: 22px;
+            }
+
+            .property-share-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .property-id-pill {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
     <link rel="icon" type="image/x-icon" href="<?= base_url('images/favicon/favicon.ico') ?>">
@@ -612,10 +996,12 @@ $page_title = 'Property Details - 11 Acer';
                 <!-- Main Content Column -->
                 <div>
                     <!-- Image Slider (Bootstrap 5.3) -->
-                    <section class="section-block" data-aos="fade-up">
+                    <section class="section-block property-hero" data-aos="fade-up">
                         <div class="row g-4 align-items-stretch">
                             <div class="col-12 col-xl-8">
-                                <div class="hero-card h-100">
+                                <div class="hero-card h-100 ball-parent">
+                                    <span class="hero-ball hero-ball-top-right"></span>
+                                    <span class="hero-ball hero-ball-bottom-left"></span>
                                     <div id="propertyCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
                                         <div class="carousel-indicators" id="carousel-indicators">
                                             <!-- indicators populated dynamically -->
@@ -633,46 +1019,70 @@ $page_title = 'Property Details - 11 Acer';
                                         </button>
                                     </div>
                                     <div class="property-header mt-4">
-                                        <h1 id="property-title" class="h3 mb-0 flex-grow-1">Loading property...</h1>
+                                        <div class="d-flex flex-column gap-2 flex-grow-1">
+                                            <span class="hero-pill" id="property-label-pill">
+                                                <i class="bi bi-buildings"></i>
+                                                <span id="property-label-text">Collecting details</span>
+                                            </span>
+                                            <h1 id="property-title" class="h3 mb-0 property-title">Loading property...</h1>
+                                        </div>
                                         <button type="button" class="property-share-btn" id="property-share" disabled>
                                             <i class="bi bi-share"></i>
                                             Share
                                         </button>
+                                    </div>
+                                    <div class="hero-meta">
+                                        <span class="hero-meta-pill">
+                                            <i class="bi bi-geo-alt"></i>
+                                            <span id="property-location-meta">Loading location</span>
+                                        </span>
+                                        <span class="hero-meta-pill">
+                                            <i class="bi bi-house"></i>
+                                            <span id="property-type-meta">Loading property type</span>
+                                        </span>
+                                        <span class="hero-meta-pill">
+                                            <i class="bi bi-hourglass-split"></i>
+                                            <span id="property-status-meta">Checking availability</span>
+                                        </span>
+                                    </div>
+                                    <div class="property-id-pill d-none" id="property-id-pill">
+                                        <i class="bi bi-hash"></i>
+                                        <span id="property-id-text">Property ID —</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-xl-4">
                                 <div class="vstack gap-4 videos-wrap" id="video-stack">
                                     <!-- videos will be injected here (one per uploaded video) -->
-                                    <div class="contact-card">
-                                        <div class="d-flex align-items-center gap-3 mb-3">
-                                            <div class="bg-white text-success rounded-circle d-flex align-items-center justify-content-center" style="width:48px;height:48px;">
+                                    <div class="contact-card ball-parent">
+                                        <span class="hero-ball hero-ball-top-right"></span>
+                                        <span class="hero-ball hero-ball-bottom-left"></span>
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <div>
+                                                <p class="mb-1 text-uppercase small text-muted">Need Assistance?</p>
+                                                <h6 class="mb-0">Connect With Our Team</h6>
+                                            </div>
+                                            <div class="rounded-circle bg-white text-success-emphasis d-flex align-items-center justify-content-center" style="width:52px;height:52px;">
                                                 <i class="bi bi-chat-dots fs-4"></i>
                                             </div>
-                                            <div>
-                                                <p class="mb-0 text-uppercase small">Need Assistance?</p>
-                                                <h6 class="mb-0">Contact an Agent</h6>
-                                            </div>
                                         </div>
-                                        <p class="small mb-3">Use the contact button on the property to reach out to the agent directly for site visits or more information.</p>
+                                        <p class="small mb-3 text-muted">Tap the contact button to connect with the agent for guided tours, pricing clarity, and paperwork support.</p>
                                         <button class="btn w-100">Contact Now</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <style>
-                        #propertyCarousel .carousel-item img { height: 480px; object-fit: cover; }
-                        @media (max-width: 768px){ #propertyCarousel .carousel-item img { height: 320px; } }
-                    </style>
 
                     <!-- Unit Options & Pricing -->
                     <section class="section-block" data-aos="fade-up" data-aos-delay="80">
                         <h4 class="section-title">Pricing</h4>
                         <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 align-items-start align-items-lg-center">
-                            <div class="price-highlight d-flex gap-3 align-items-center w-100 w-lg-auto">
-                                <div class="rounded-circle bg-white shadow-sm d-flex align-items-center justify-content-center" style="width:52px;height:52px;">
-                                    <i class="bi bi-currency-rupee text-success fs-4"></i>
+                            <div class="price-highlight ball-parent d-flex gap-3 align-items-center w-100 w-lg-auto">
+                                <span class="hero-ball hero-ball-top-right"></span>
+                                <span class="hero-ball hero-ball-bottom-left"></span>
+                                <div class="price-icon">
+                                    <i class="bi bi-currency-rupee"></i>
                                 </div>
                                 <div>
                                     <div class="text-uppercase text-muted small fw-semibold">Current Price</div>
@@ -686,7 +1096,9 @@ $page_title = 'Property Details - 11 Acer';
                     <!-- Property Details -->
                     <section id="property-details-section" class="section-block d-none" data-aos="fade-up" data-aos-delay="200">
                         <h4 class="section-title">Property Details</h4>
-                        <div class="detail-card">
+                        <div class="detail-card ball-parent">
+                            <span class="hero-ball hero-ball-top-right"></span>
+                            <span class="hero-ball hero-ball-bottom-left"></span>
                             <p id="property-overview" class="text-muted mb-2"></p>
                             <a href="#" id="property-readmore" class="fw-bold text-decoration-none" style="display:none">Read More</a>
                         </div>
@@ -694,7 +1106,11 @@ $page_title = 'Property Details - 11 Acer';
 
                     <section class="section-block d-none" data-aos="fade-up" data-aos-delay="220" id="floor-plan-section">
                         <h4 class="section-title">Floor Plan</h4>
-                        <div id="floor-plan-content" class="floor-plan-card text-center p-4"></div>
+                        <div class="floor-plan-card ball-parent text-center p-4">
+                            <span class="hero-ball hero-ball-top-right"></span>
+                            <span class="hero-ball hero-ball-bottom-left"></span>
+                            <div id="floor-plan-content"></div>
+                        </div>
                     </section>
 
                     <hr>
@@ -704,9 +1120,11 @@ $page_title = 'Property Details - 11 Acer';
                         <h4 class="section-title">Overview</h4>
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <div class="detail-card h-100">
+                                <div class="detail-card ball-parent h-100">
+                                    <span class="hero-ball hero-ball-top-right"></span>
+                                    <span class="hero-ball hero-ball-bottom-left"></span>
                                     <div class="detail-item mb-3">
-                                        <div class="icon-wrap bg-success-subtle text-success rounded-circle d-flex align-items-center justify-content-center" style="width:48px;height:48px;">
+                                        <div class="icon-wrap">
                                             <i class="bi bi-calendar-check icon"></i>
                                         </div>
                                         <div>
@@ -715,7 +1133,7 @@ $page_title = 'Property Details - 11 Acer';
                                         </div>
                                     </div>
                                     <div class="detail-item">
-                                        <div class="icon-wrap bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center" style="width:48px;height:48px;">
+                                        <div class="icon-wrap">
                                             <i class="bi bi-rulers icon"></i>
                                         </div>
                                         <div>
@@ -726,9 +1144,11 @@ $page_title = 'Property Details - 11 Acer';
                                 </div>
                             </div>
                              <div class="col-md-6">
-                                <div class="detail-card h-100">
+                                <div class="detail-card ball-parent h-100">
+                                    <span class="hero-ball hero-ball-top-right"></span>
+                                    <span class="hero-ball hero-ball-bottom-left"></span>
                                     <div class="detail-item mb-3">
-                                        <div class="icon-wrap bg-warning-subtle text-warning rounded-circle d-flex align-items-center justify-content-center" style="width:48px;height:48px;">
+                                        <div class="icon-wrap">
                                             <i class="bi bi-tag icon"></i>
                                         </div>
                                         <div>
@@ -737,7 +1157,7 @@ $page_title = 'Property Details - 11 Acer';
                                         </div>
                                     </div>
                                     <div class="detail-item">
-                                        <div class="icon-wrap bg-info-subtle text-info rounded-circle d-flex align-items-center justify-content-center" style="width:48px;height:48px;">
+                                        <div class="icon-wrap">
                                             <i class="bi bi-building icon"></i>
                                         </div>
                                         <div>
@@ -755,14 +1175,18 @@ $page_title = 'Property Details - 11 Acer';
                     <!-- Configuration & Details -->
                     <section class="section-block" data-aos="fade-up" data-aos-delay="280">
                         <h4 class="section-title">Configuration & Details</h4>
-                        <div class="amenities-wrap mb-3">
+                        <div class="amenities-wrap ball-parent mb-3">
+                            <span class="hero-ball hero-ball-top-right"></span>
+                            <span class="hero-ball hero-ball-bottom-left"></span>
                             <div id="config-list" class="row g-3"></div>
                         </div>
                     </section>
 
                     <section class="section-block d-none" id="amenities-section" data-aos="fade-up" data-aos-delay="320">
                         <h4 class="section-title">Amenities</h4>
-                        <div class="amenities-wrap" id="amenities-wrap">
+                        <div class="amenities-wrap ball-parent" id="amenities-wrap">
+                            <span class="hero-ball hero-ball-top-right"></span>
+                            <span class="hero-ball hero-ball-bottom-left"></span>
                             <div id="amenities-list" class="row g-2"></div>
                         </div>
                     </section>
@@ -835,11 +1259,35 @@ $page_title = 'Property Details - 11 Acer';
                 x: document.getElementById('shareX'),
                 linkedin: document.getElementById('shareLinkedIn')
             };
+            const labelTextEl = document.getElementById('property-label-text');
+            const locationMetaEl = document.getElementById('property-location-meta');
+            const typeMetaEl = document.getElementById('property-type-meta');
+            const statusMetaEl = document.getElementById('property-status-meta');
+            const propertyIdPillEl = document.getElementById('property-id-pill');
+            const propertyIdTextEl = document.getElementById('property-id-text');
 
             let sharePayload = {
                 url: window.location.href,
                 title: 'Property Link'
             };
+
+            const currencyFormatter = new Intl.NumberFormat('en-IN');
+
+            // Formats numeric and descriptive price strings to stay consistent with the rupee theme.
+            function formatCurrency(value) {
+                if (value === null || value === undefined) return '';
+                const stringValue = String(value).trim();
+                if (!stringValue) return '';
+                const normalized = stringValue.replace(/[₹,\s]/g, '');
+                if (/^\d+(\.\d+)?$/.test(normalized)) {
+                    const numeric = Number(normalized);
+                    if (!Number.isNaN(numeric) && numeric > 0) {
+                        return '₹ ' + currencyFormatter.format(Math.round(numeric));
+                    }
+                }
+                if (/^contact/i.test(stringValue)) return 'Contact for price';
+                return stringValue.startsWith('₹') ? stringValue : '₹ ' + stringValue;
+            }
 
             function openShareModal(url, title = 'Property Link') {
                 if (!shareModalInstance || !shareLinkInput) return;
@@ -1008,12 +1456,31 @@ $page_title = 'Property Details - 11 Acer';
                     shareButton.setAttribute('aria-label', `Share ${title}`);
                 }
 
+                const propertyType = prop.property_type || prop.property_category || (prop.details && (prop.details.property_type || prop.details.type)) || '';
+                const statusText = prop.possession_status || prop.status || (prop.details && (prop.details.availability || prop.details.status)) || '';
+                const locationParts = [prop.locality || (prop.details && prop.details.sublocality), prop.city, prop.state].filter(Boolean);
+                if (labelTextEl) labelTextEl.textContent = propertyType || 'Featured Listing';
+                if (locationMetaEl) locationMetaEl.textContent = locationParts.join(', ') || 'Location unavailable';
+                if (typeMetaEl) typeMetaEl.textContent = propertyType || 'Type not specified';
+                if (statusMetaEl) statusMetaEl.textContent = statusText || 'Availability updating';
+                const propertyIdentifier = prop.public_id || prop.property_id || prop.id || '';
+                if (propertyIdTextEl) propertyIdTextEl.textContent = propertyIdentifier ? `Property ID — ${propertyIdentifier}` : 'Property ID — Pending';
+                if (propertyIdPillEl) propertyIdPillEl.classList.toggle('d-none', !propertyIdentifier);
+
                 const priceVal = (prop.pricing && prop.pricing.price) ? prop.pricing.price : (prop.price || prop.avg_price || '');
                 const priceMainEl = document.getElementById('property-price-main');
                 const pricePsfEl = document.getElementById('property-price-per-sqft');
-                if (priceMainEl) priceMainEl.textContent = priceVal ? ('₹ ' + String(priceVal)) : 'Contact for price';
+                const formattedPrice = formatCurrency(priceVal);
+                if (priceMainEl) priceMainEl.textContent = formattedPrice || 'Contact for price';
                 const pps = prop.price_per_sqft || (prop.pricing && prop.pricing.price_per_sqft) || '';
-                if (pricePsfEl) pricePsfEl.textContent = pps ? ('₹ ' + String(pps) + '/sq.ft') : '';
+                const formattedPps = formatCurrency(pps);
+                if (pricePsfEl) {
+                    if (formattedPps && !/^Contact/i.test(formattedPps)) {
+                        pricePsfEl.textContent = /sq|per|\/|acre/i.test(formattedPps) ? formattedPps : (formattedPps + '/sq.ft');
+                    } else {
+                        pricePsfEl.textContent = '';
+                    }
+                }
 
                 const overviewEl = document.getElementById('property-overview');
                 const descRaw = (prop.details && (prop.details.description || prop.details.unique_features)) || prop.description || '';
@@ -1032,7 +1499,7 @@ $page_title = 'Property Details - 11 Acer';
                 const configEl = document.getElementById('property-configuration');
                 if (possessionEl) possessionEl.textContent = safeText((prop.details && prop.details.availability) || prop.possession_status || 'N/A');
                 if (areaEl) areaEl.textContent = (prop.details && prop.details.area_sqft) ? (prop.details.area_sqft + ' sq.ft') : (prop.area_sqft ? prop.area_sqft + ' sq.ft' : 'N/A');
-                if (avgPriceEl) avgPriceEl.textContent = priceVal ? ('₹ ' + String(priceVal)) : 'N/A';
+                if (avgPriceEl) avgPriceEl.textContent = formattedPrice || 'N/A';
                 if (configEl) configEl.textContent = prop.configuration || (prop.details && prop.details.configuration) || 'N/A';
 
                 // Build carousel from images only, and place videos into the sidebar stack
@@ -1120,32 +1587,43 @@ $page_title = 'Property Details - 11 Acer';
                 if (videoStack) {
                     // keep the contact card at the end; clear others
                     const contactHtml = `
-                        <div class="contact-card">
-                            <div class="d-flex align-items-center gap-3 mb-3">
-                                <div class="bg-white text-success rounded-circle d-flex align-items-center justify-content-center" style="width:48px;height:48px;">
+                        <div class="contact-card ball-parent">
+                            <span class="hero-ball hero-ball-top-right"></span>
+                            <span class="hero-ball hero-ball-bottom-left"></span>
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <div>
+                                    <p class="mb-1 text-uppercase small text-muted">Need Assistance?</p>
+                                    <h6 class="mb-0">Connect With Our Team</h6>
+                                </div>
+                                <div class="rounded-circle bg-white text-success-emphasis d-flex align-items-center justify-content-center" style="width:52px;height:52px;">
                                     <i class="bi bi-chat-dots fs-4"></i>
                                 </div>
-                                <div>
-                                    <p class="mb-0 text-uppercase small">Need Assistance?</p>
-                                    <h6 class="mb-0">Contact an Agent</h6>
-                                </div>
                             </div>
-                            <p class="small mb-3">Use the contact button on the property to reach out to the agent directly for site visits or more information.</p>
+                            <p class="small mb-3 text-muted">Tap the contact button to connect with the agent for guided tours, pricing clarity, and paperwork support.</p>
                             <button class="btn w-100">Contact Now</button>
                         </div>`;
                     videoStack.innerHTML = '';
                     if (videos.length) {
                         videos.forEach(v => {
                             const url = v.file_url || v.url || v.fileUrl || '';
-                            const card = document.createElement('div'); card.className = 'card p-2';
-                            card.innerHTML = '<video controls style="width:100%;height:180px;object-fit:cover;border-radius:8px"><source src="' + url + '"></video>';
+                            if (!url) return;
+                            const encodedVideoUrl = encodeURI(url);
+                            const safeUrl = escapeHtml(encodedVideoUrl);
+                            const card = document.createElement('div');
+                            card.className = 'video-card ball-parent p-3';
+                            card.innerHTML = `
+                                <span class="hero-ball hero-ball-top-right"></span>
+                                <span class="hero-ball hero-ball-bottom-left"></span>
+                                <video controls preload="metadata" class="video-card-player">
+                                    <source src="${safeUrl}">
+                                </video>`;
                             videoStack.appendChild(card);
                         });
                     }
                     const videoLinks = (Array.isArray(prop.video_links) ? prop.video_links : []).map(link => (link || '').trim()).filter(Boolean);
                     if (videoLinks.length) {
                         const linksCard = document.createElement('div');
-                        linksCard.className = 'walkthrough-card p-3';
+                        linksCard.className = 'walkthrough-card ball-parent p-3';
                         let listHtml = '<div class="d-flex align-items-center gap-2 mb-2 text-success fw-semibold"><i class="bi bi-play-btn-fill fs-5"></i><span>Walkthrough Links</span></div><div class="d-flex flex-wrap gap-2">';
                         videoLinks.forEach(link => {
                             const safeText = escapeHtml(link);
@@ -1153,14 +1631,20 @@ $page_title = 'Property Details - 11 Acer';
                             listHtml += '<a href="' + href + '" target="_blank" rel="noreferrer noopener" class="walkthrough-link">' + safeText + '</a>';
                         });
                         listHtml += '</div>';
-                        linksCard.innerHTML = listHtml;
+                        linksCard.innerHTML = `
+                            <span class="hero-ball hero-ball-top-right"></span>
+                            <span class="hero-ball hero-ball-bottom-left"></span>
+                            ${listHtml}`;
                         videoStack.appendChild(linksCard);
                     }
                     if (ownerCardElement) {
                         videoStack.appendChild(ownerCardElement);
                     }
                     // append contact card last
-                    const contactWrap = document.createElement('div'); contactWrap.innerHTML = contactHtml; videoStack.appendChild(contactWrap);
+                    const contactWrap = document.createElement('div');
+                    contactWrap.innerHTML = contactHtml.trim();
+                    const contactNode = contactWrap.firstElementChild;
+                    if (contactNode) videoStack.appendChild(contactNode);
                 }
 
                 // Populate amenities and configuration from details JSON with a polished UI
@@ -1240,12 +1724,14 @@ $page_title = 'Property Details - 11 Acer';
 
                 function buildOwnerCard(info) {
                     const card = document.createElement('div');
-                    card.className = 'owner-card owner-card-fancy mb-3';
+                    card.className = 'owner-card owner-card-fancy ball-parent mb-3';
                     const initials = (info.name || 'Owner').split(' ').map(s => s.charAt(0)).filter(Boolean).slice(0, 2).join('').toUpperCase() || 'PO';
                     const phoneLink = info.phone ? 'tel:' + info.phone.replace(/[^0-9+]/g, '') : '';
                     const emailLink = info.email ? 'mailto:' + info.email : '';
                     const metaSection = info.postedOn ? `<span class="text-muted small">${escapeHtml(info.postedOn)}</span>` : '';
                     card.innerHTML = `
+                        <span class="hero-ball hero-ball-top-right"></span>
+                        <span class="hero-ball hero-ball-bottom-left"></span>
                         <div class="owner-meta">
                             <div class="owner-avatar">${escapeHtml(initials)}</div>
                             <div class="owner-details">
@@ -1334,9 +1820,9 @@ $page_title = 'Property Details - 11 Acer';
                 if (detailsRender) {
                     detailsRender.innerHTML = '';
                     const summary = document.createElement('div');
-                    summary.className = 'detail-card';
+                    summary.className = 'detail-card ball-parent';
                     const keysToShow = ['facing', 'floor', 'total_floors', 'balconies', 'bathrooms', 'bedrooms', 'builder', 'rera_no'];
-                    let html = '<div class="row">';
+                    let html = '<span class="hero-ball hero-ball-top-right"></span><span class="hero-ball hero-ball-bottom-left"></span><div class="row">';
                     keysToShow.forEach(k => {
                         if (details[k] !== undefined) {
                             html += '<div class="col-sm-6"><strong>' + escapeHtml(k.replace(/_/g, ' ')) + ':</strong> ' + formatValue(details[k]) + '</div>';
@@ -1360,25 +1846,28 @@ $page_title = 'Property Details - 11 Acer';
                         similarRow.innerHTML = '<div class="col-12 text-muted">No similar properties found.</div>';
                     } else {
                         similar.forEach(s => {
-                            const fm = (s.media && s.media[0]) ? (s.media[0].file_url || s.media[0].url || '') : '<?= base_url('images/property.png') ?>';
-                            const price = (s.pricing && s.pricing.price) ? s.pricing.price : (s.price || s.avg_price || 'Contact');
-                            const title = s.property_name || s.title || s.name || '';
-                            const loc = s.locality || (s.details && s.details.sublocality) || s.city || '';
-                            const col = document.createElement('div'); col.className = 'col-12 col-md-6';
-                            col.innerHTML = `
-                                <div class="property-listing-card h-100">
-                                    <div class="position-relative">
-                                        <img src="${fm}" class="card-img-top" alt="Property Image">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">${title}</h5>
-                                        <p class="card-price">₹ ${price}</p>
-                                        <p class="text-muted small mb-0">${loc}</p>
-                                    </div>
-                                </div>`;
-                            // wrap with link
+                            const fm = (s.media && s.media[0]) ? (s.media[0].file_url || s.media[0].url || '') : carouselPlaceholder;
+                            const imgSrc = escapeHtml(encodeURI(fm));
+                            const priceRaw = (s.pricing && s.pricing.price) ? s.pricing.price : (s.price || s.avg_price || '');
+                            const priceLabel = formatCurrency(priceRaw) || 'Contact for price';
+                            const title = escapeHtml(s.property_name || s.title || s.name || 'Untitled');
+                            const loc = escapeHtml(s.locality || (s.details && s.details.sublocality) || s.city || 'Location coming soon');
                             const wrapper = document.createElement('div'); wrapper.className = 'col-12 col-md-6';
-                            wrapper.innerHTML = `<a href="${detailUrl}?id=${s.id}" class="text-decoration-none text-reset d-block h-100">${col.innerHTML}</a>`;
+                            wrapper.innerHTML = `
+                                <a href="${detailUrl}?id=${encodeURIComponent(s.id)}" class="text-decoration-none text-reset d-block h-100">
+                                    <article class="property-listing-card ball-parent h-100">
+                                        <span class="hero-ball hero-ball-top-right"></span>
+                                        <span class="hero-ball hero-ball-bottom-left"></span>
+                                        <div class="position-relative">
+                                            <img src="${imgSrc}" class="card-img-top" alt="Similar property image">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">${title}</h5>
+                                            <p class="card-price">${escapeHtml(priceLabel)}</p>
+                                            <p class="text-muted small mb-0">${loc}</p>
+                                        </div>
+                                    </article>
+                                </a>`;
                             similarRow.appendChild(wrapper);
                         });
                     }

@@ -1499,101 +1499,136 @@
             color: #facc15;
             font-size: 14px;
         }
+
         /* ==============================
    TESTIMONIALS SECTION
 ============================== */
-.testimonials-section-v2 {
-    padding: 90px 0;
-    background: radial-gradient(
-        circle at top left,
-        #0f172a 0%,
-        #064e3b 45%,
-        #052e1c 100%
-    );
-}
+        .testimonials-section-v2 {
+            padding: 90px 0;
+            background: radial-gradient(circle at top left,
+                    #0f172a 0%,
+                    #064e3b 45%,
+                    #052e1c 100%);
+        }
 
-/* ==============================
+        /* ==============================
    CARD
 ============================== */
-.testimonial-card-v2 {
-    position: relative;
-    height: 100%;
-    padding: 36px 34px;
-    border-radius: 20px;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.12),
-        rgba(255, 255, 255, 0.05)
-    );
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(14px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    color: #ffffff;
-}
+        .testimonial-card-v2 {
+            position: relative;
+            height: 100%;
+            padding: 36px 34px;
+            border-radius: 20px;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.12),
+                    rgba(255, 255, 255, 0.05));
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            color: #ffffff;
+        }
 
-/* ==============================
+        /* ==============================
    QUOTE ICON
 ============================== */
-.quote-icon {
-    font-size: 46px;
-    font-weight: 700;
-    color: #22c55e;
-    margin-bottom: 10px;
-}
+        .quote-icon {
+            font-size: 46px;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
 
-/* ==============================
+        /* ==============================
    TEXT
 ============================== */
-.testimonial-text {
-    font-size: 16px;
-    line-height: 1.7;
-    color: #e5e7eb;
-    margin-bottom: 22px;
-}
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #e5e7eb;
+            margin-bottom: 22px;
+        }
 
-/* ==============================
+        /* ==============================
    STARS
 ============================== */
-.stars {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 22px;
-}
+        .stars {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 22px;
+        }
 
-.stars i {
-    color: #facc15;
-    font-size: 16px;
-}
+        .stars i {
+            color: #facc15;
+            font-size: 16px;
+        }
 
-/* ==============================
+        /* ==============================
    USER INFO
 ============================== */
-.testimonial-user {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
+        .testimonial-user {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
 
-.avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    background: transparent;
-}
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+        }
 
-.testimonial-user h6 {
-    margin: 0;
-    font-size: 15px;
-    font-weight: 600;
-    color: #ffffff;
-}
+        .testimonial-user h6 {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+        }
 
-.testimonial-user span {
-    font-size: 13px;
-    color: #d1d5db;
-}
+        .testimonial-user span {
+            font-size: 13px;
+            color: #d1d5db;
+        }
 
+        .ball-parent {
+            position: relative;
+            overflow: hidden;
+            /* balls card ke bahar na jaye */
+            background: #fff;
+        }
+
+        /* Common ball style */
+        .hero-ball {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            pointer-events: none;
+            /* filter: blur(14px); */
+            opacity: 0.9;
+            z-index: 0;
+        }
+
+        /* Top right green ball */
+        .hero-ball-top-right {
+            top: -70px;
+            right: -70px;
+            background : #6fe6a9af;
+        }
+
+        /* Bottom left soft green ball */
+        .hero-ball-bottom-left {
+            bottom: -80px;
+            left: -80px;
+            background : #a8f0cdad;
+        }
+
+        /* Make sure content stays above balls */
+        .ball-parent>*:not(.hero-ball) {
+            position: relative;
+            z-index: 1;
+        }
         </style>
     </head>
 
@@ -1643,7 +1678,10 @@
                 <p class="text-white" data-aos="fade-down" data-aos-delay="160">Discover the perfect place to call home
                     from our extensive listings</p>
 
-                <div class="hero-search-card" data-aos="fade-up" data-aos-delay="180">
+                <div class="hero-search-card ball-parent" data-aos="fade-up" data-aos-delay="180">
+                    <!-- Decorative balls -->
+                    <span class="hero-ball hero-ball-top-right"></span>
+                    <span class="hero-ball hero-ball-bottom-left"></span>
                     <div class="hero-search-mode rounded-3" role="tablist" aria-label="Search segment control">
                         <?php foreach ($listingModes as $index => $mode): ?>
                         <?php
@@ -2283,7 +2321,8 @@
                                     <?php if (!empty($builder['logo'])): ?>
                                     <img src="<?= esc($builder['logo']) ?>" alt="<?= esc($builder['name']) ?>">
                                     <?php else: ?>
-                                    <img src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?auto=format&fit=crop&w=200&q=80" alt="<?= esc($builder['name']) ?>">
+                                    <img src="https://images.unsplash.com/photo-1472289065668-ce650ac443d2?auto=format&fit=crop&w=200&q=80"
+                                        alt="<?= esc($builder['name']) ?>">
                                     <?php endif; ?>
                                 </div>
 
@@ -2303,7 +2342,7 @@
 
 
             <!-- CUSTOMER TESTIMONIALS -->
-<?php
+            <?php
 $testimonials = is_array($testimonials ?? null) ? $testimonials : [];
 
 if (empty($testimonials)) {
@@ -2323,44 +2362,44 @@ if (empty($testimonials)) {
     ];
 }
 ?>
-<section class="testimonials-section-v2">
-    <div class="container">
-        <div class="section-heading text-center mb-5">
-            <h2 class="section-title text-white">Customer Stories</h2>
-            <p class="section-subtitle text-light">
-                Hear what our satisfied customers have to say about their experience
-            </p>
-        </div>
-
-        <div class="row g-4 justify-content-center">
-            <?php foreach ($testimonials as $testimonial): ?>
-                <div class="col-lg-6">
-                    <div class="testimonial-card-v2">
-                        <div class="quote-icon">“</div>
-
-                        <p class="testimonial-text">
-                            "<?= esc($testimonial['message']) ?>"
+            <section class="testimonials-section-v2">
+                <div class="container">
+                    <div class="section-heading text-center mb-5">
+                        <h2 class="section-title text-white">Customer Stories</h2>
+                        <p class="section-subtitle text-light">
+                            Hear what our satisfied customers have to say about their experience
                         </p>
+                    </div>
 
-                        <div class="stars">
-                            <?php for ($i = 0; $i < $testimonial['rating']; $i++): ?>
-                                <i class="bi bi-star-fill"></i>
-                            <?php endfor; ?>
-                        </div>
+                    <div class="row g-4 justify-content-center">
+                        <?php foreach ($testimonials as $testimonial): ?>
+                        <div class="col-lg-6">
+                            <div class="testimonial-card-v2">
+                                <div class="quote-icon">“</div>
 
-                        <div class="testimonial-user">
-                            <div class="avatar"></div>
-                            <div>
-                                <h6><?= esc($testimonial['name']) ?></h6>
-                                <span><?= esc($testimonial['role']) ?></span>
+                                <p class="testimonial-text">
+                                    "<?= esc($testimonial['message']) ?>"
+                                </p>
+
+                                <div class="stars">
+                                    <?php for ($i = 0; $i < $testimonial['rating']; $i++): ?>
+                                    <i class="bi bi-star-fill"></i>
+                                    <?php endfor; ?>
+                                </div>
+
+                                <div class="testimonial-user">
+                                    <div class="avatar"></div>
+                                    <div>
+                                        <h6><?= esc($testimonial['name']) ?></h6>
+                                        <span><?= esc($testimonial['role']) ?></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
+            </section>
 
 
             <!-- RECENTLY VIEWED / RECOMMENDED -->

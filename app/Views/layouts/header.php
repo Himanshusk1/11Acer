@@ -54,7 +54,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link <?= ($active_page ?? '')=='tenants'?'active':'' ?>" href="<?= site_url('commercial') ?>">Tenants</a>
+                        <a class="nav-link <?= ($active_page ?? '')=='tenants'?'active':'' ?>" href="<?= site_url('tenants') ?>">Tenants</a>
                     </li>
 
                     <li class="nav-item">
