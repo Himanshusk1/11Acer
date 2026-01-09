@@ -5,6 +5,49 @@ document.addEventListener('DOMContentLoaded', () => {
         AOS.init({ once: true, duration: 600, offset: 120 });
     }
 
+    const loaderEl = document.getElementById('pageLoader');
+    if (loaderEl) {
+        const percentEl = loaderEl.querySelector('[data-loader-percent]');
+        const barEl = loaderEl.querySelector('[data-loader-bar]');
+        let progress = 0;
+        const updateProgress = (value) => {
+            progress = Math.min(100, value);
+            if (barEl) {
+                barEl.style.width = `${progress}%`;
+            }
+            if (percentEl) {
+                percentEl.textContent = `${progress}%`;
+            }
+        };
+        const idleCeiling = 90;
+        const intervalId = window.setInterval(() => {
+            if (progress >= idleCeiling) {
+                return;
+            }
+            updateProgress(progress + 1);
+        }, 20);
+        const finalizeLoader = () => {
+            window.clearInterval(intervalId);
+            const stepToComplete = () => {
+                if (progress >= 100) {
+                    loaderEl.classList.add('is-hidden');
+                    loaderEl.addEventListener('transitionend', () => {
+                        loaderEl.remove();
+                    }, { once: true });
+                    return;
+                }
+                updateProgress(progress + 1);
+                window.requestAnimationFrame(stepToComplete);
+            };
+            stepToComplete();
+        };
+        if (document.readyState === 'complete') {
+            finalizeLoader();
+        } else {
+            window.addEventListener('load', finalizeLoader, { once: true });
+        }
+    }
+
     const megaToggleSelector = '[data-mega-toggle="true"]';
     const megaToggles = Array.from(document.querySelectorAll(megaToggleSelector));
 

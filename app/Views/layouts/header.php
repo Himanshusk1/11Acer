@@ -19,7 +19,66 @@
     max-height: 42px;
 }
 
+.page-loader {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    z-index: 2000;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.page-loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.page-loader__content {
+    width: min(320px, 80%);
+    text-align: center;
+}
+
+.page-loader__logo {
+    width: 120px;
+    margin: 0 auto 16px;
+    display: block;
+}
+
+.page-loader__bar {
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.page-loader__progress {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #00c950, #00a63e);
+    transition: width 0.2s ease-out;
+}
+
+.page-loader__percent {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #212529;
+}
+
 </style>
+
+<div id="pageLoader" class="page-loader">
+    <div class="page-loader__content">
+        <img class="page-loader__logo" src="<?= base_url('images/PNG.png') ?>" alt="11 Acre Logo" loading="lazy">
+        <div class="page-loader__bar">
+            <div class="page-loader__progress" data-loader-bar></div>
+        </div>
+        <div class="page-loader__percent" data-loader-percent>0%</div>
+    </div>
+</div>
 
 <nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom" style="linear-gradient(135deg, #00C950, #00A63E) !important;}">
     <div class="container">
