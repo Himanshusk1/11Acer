@@ -2,7 +2,7 @@
 $active = $active ?? '';
 ?>
 <nav class="sidebar" id="admin-sidebar">
-    <h3 class="sidebar-header">36Broking<span>.</span></h3>
+    <h3 class="sidebar-header">11 Acer<span>.</span></h3>
     <ul class="nav flex-column">
         <h6>Management</h6>
         <li class="nav-item">
