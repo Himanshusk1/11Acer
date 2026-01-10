@@ -117,7 +117,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link <?= ($active_page ?? '')=='owner'?'active':'' ?>" href="<?= site_url('residential') ?>">Owner / Builder</a>
+                        <a class="nav-link <?= ($active_page ?? '')=='owner'?'active':'' ?>" href="<?= site_url('owner-builder') ?>">Owner / Builder</a>
                     </li>
 
                     <li class="nav-item">
