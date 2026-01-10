@@ -34,7 +34,7 @@ if (!function_exists('is_recognized_role')) {
 	 */
 	function is_recognized_role(?string $role): bool
 	{
-		$validRoles = ['admin', 'individual', 'agent', 'builder', 'buyer', 'owner', 'broker'];
+		$validRoles = ['admin', 'individual', 'agent', 'builder', 'buyer', 'owner', 'broker', 'service'];
 		return $role !== null && in_array($role, $validRoles, true);
 	}
 }

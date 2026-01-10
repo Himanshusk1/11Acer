@@ -1,285 +1,315 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
-    #loginModal .modal-dialog {
-        max-width: 540px;
-    }
-    #loginModal .modal-content {
-        border: none;
-        overflow: hidden;
-        box-shadow: 0 40px 70px rgba(8, 24, 16, 0.28);
-    }
+#loginModal .modal-dialog {
+    max-width: 540px;
+}
+
+#loginModal .modal-content {
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 40px 70px rgba(8, 24, 16, 0.28);
+}
+
+#loginModal .modal-header {
+    padding: 1.4rem 2rem 0;
+    border: none;
+}
+
+#loginModalLabel {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f2d1e;
+}
+
+#loginModal .modal-body {
+    padding: 1.25rem 2rem 2.25rem;
+    background: #f8faf9;
+}
+
+.auth-card {
+    position: relative;
+    background: #ffffff;
+    padding: 2rem 1.9rem;
+    box-shadow: 0 24px 48px rgba(12, 39, 26, 0.18);
+    overflow: hidden;
+    display: grid;
+    gap: 1.4rem;
+}
+
+/* Accent halos for top-right and bottom-left corners */
+.auth-card::after,
+.auth-card::before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(0);
+    z-index: 0;
+}
+
+.auth-card::after {
+    width: 160px;
+    height: 160px;
+    top: -60px;
+    right: -60px;
+    background: var(--accent-primary, rgba(34, 197, 94, 0.18));
+}
+
+.auth-card::before {
+    width: 210px;
+    height: 210px;
+    bottom: -105px;
+    left: -90px;
+    background: var(--accent-secondary, rgba(34, 197, 94, 0.12));
+}
+
+.auth-card>* {
+    position: relative;
+    z-index: 1;
+}
+
+.auth-card-login {
+    --accent-primary: rgba(34, 197, 94, 0.22);
+    --accent-secondary: rgba(16, 185, 129, 0.14);
+}
+
+.auth-card-otp {
+    --accent-primary: rgba(99, 102, 241, 0.22);
+    --accent-secondary: rgba(14, 165, 233, 0.14);
+}
+
+.auth-card-register {
+    --accent-primary: rgba(249, 115, 22, 0.22);
+    --accent-secondary: rgba(252, 211, 77, 0.16);
+}
+
+.auth-head {
+    text-align: center;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.auth-tagline {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.12);
+    color: #15803d;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.auth-card-otp .auth-tagline {
+    background: rgba(59, 130, 246, 0.12);
+    color: #2563eb;
+}
+
+.auth-card-register .auth-tagline {
+    background: rgba(249, 115, 22, 0.12);
+    color: #f97316;
+}
+
+.auth-head h6 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0f2d1e;
+}
+
+.auth-head p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #4f574d;
+    line-height: 1.6;
+}
+
+.auth-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.auth-badges span {
+    padding: 0.22rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.1);
+    color: #0f5132;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.auth-form .form-control {
+    border-radius: 14px;
+    border: 1px solid rgba(15, 45, 30, 0.14);
+    padding: 0.9rem 1rem;
+    background: rgba(248, 250, 248, 0.9);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-form .form-control:focus {
+    border-color: rgba(34, 197, 94, 0.6);
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    border: none;
+    font-weight: 600;
+}
+
+.btn-success:hover {
+    box-shadow: 0 14px 28px rgba(16, 185, 129, 0.36);
+}
+
+.btn-google {
+    border: 1px solid rgba(15, 30, 25, 0.12);
+    padding: 0.85rem 1rem;
+    font-weight: 600;
+    background: #ffffff;
+    color: #0f2d1e;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-google:hover {
+    border-color: rgba(15, 30, 25, 0.32);
+    box-shadow: 0 14px 30px rgba(15, 30, 25, 0.08);
+}
+
+.auth-divider {
+    position: relative;
+    text-align: center;
+    margin: 0.3rem 0 0.6rem;
+}
+
+.auth-divider::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: rgba(15, 45, 35, 0.1);
+}
+
+.auth-divider span {
+    position: relative;
+    background: #ffffff;
+    padding: 0 0.65rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #6b7a6d;
+    letter-spacing: 0.08em;
+}
+
+.form-check-label a {
+    color: #16a34a;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-note {
+    border-radius: 16px;
+    background: #10281c;
+    color: #ffffff;
+    padding: 0.85rem 1rem;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.otp-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 0.55rem;
+}
+
+.otp-inputs input {
+    width: 46px;
+    height: 56px;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 600;
+    border: 1px solid rgba(99, 102, 241, 0.28);
+    background: rgba(248, 250, 255, 0.9);
+}
+
+.auth-card-otp .otp-inputs input:focus {
+    border-color: rgba(14, 165, 233, 0.6);
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.18);
+}
+
+.auth-phone {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #0b3b2a;
+}
+
+.auth-card-otp .auth-phone {
+    color: #1d4ed8;
+}
+
+.role-btn {
+    border-radius: 999px;
+    border: 1px solid rgba(15, 45, 30, 0.14);
+    padding: 0.55rem 1.25rem;
+    font-weight: 600;
+    color: #0f2d1e;
+    background: rgba(248, 250, 248, 0.9);
+}
+
+.btn-check:checked+.role-btn {
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 12px 24px rgba(16, 185, 129, 0.32);
+}
+
+.auth-card-register .btn-success {
+    background: linear-gradient(135deg, #f97316, #fb923c);
+}
+
+.auth-card-register .btn-success:hover {
+    box-shadow: 0 14px 28px rgba(249, 115, 22, 0.32);
+}
+
+.auth-card-register .form-control:focus {
+    border-color: rgba(249, 115, 22, 0.6);
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.18);
+}
+
+.auth-card-otp .btn-link {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+@media (max-width: 575.98px) {
     #loginModal .modal-header {
-        padding: 1.4rem 2rem 0;
-        border: none;
+        padding: 1.2rem 1.3rem 0;
     }
-    #loginModalLabel {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #0f2d1e;
-    }
+
     #loginModal .modal-body {
-        padding: 1.25rem 2rem 2.25rem;
-        background: #f8faf9;
+        padding: 1rem 1.3rem 1.8rem;
     }
 
     .auth-card {
-        position: relative;
-        background: #ffffff;
-        padding: 2rem 1.9rem;
-        box-shadow: 0 24px 48px rgba(12, 39, 26, 0.18);
-        overflow: hidden;
-        display: grid;
-        gap: 1.4rem;
-    }
-    /* Accent halos for top-right and bottom-left corners */
-    .auth-card::after,
-    .auth-card::before {
-        content: "";
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(0);
-        z-index: 0;
-    }
-    .auth-card::after {
-        width: 160px;
-        height: 160px;
-        top: -60px;
-        right: -60px;
-        background: var(--accent-primary, rgba(34, 197, 94, 0.18));
-    }
-    .auth-card::before {
-        width: 210px;
-        height: 210px;
-        bottom: -105px;
-        left: -90px;
-        background: var(--accent-secondary, rgba(34, 197, 94, 0.12));
-    }
-    .auth-card > * {
-        position: relative;
-        z-index: 1;
+        padding: 1.6rem 1.4rem;
+        border-radius: 20px;
     }
 
-    .auth-card-login {
-        --accent-primary: rgba(34, 197, 94, 0.22);
-        --accent-secondary: rgba(16, 185, 129, 0.14);
-    }
-    .auth-card-otp {
-        --accent-primary: rgba(99, 102, 241, 0.22);
-        --accent-secondary: rgba(14, 165, 233, 0.14);
-    }
-    .auth-card-register {
-        --accent-primary: rgba(249, 115, 22, 0.22);
-        --accent-secondary: rgba(252, 211, 77, 0.16);
-    }
-
-    .auth-head {
-        text-align: center;
-        display: grid;
-        gap: 0.75rem;
-    }
-    .auth-tagline {
-        display: inline-block;
-        padding: 0.35rem 0.85rem;
-        border-radius: 999px;
-        background: rgba(34, 197, 94, 0.12);
-        color: #15803d;
-        font-size: 0.78rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-    }
-    .auth-card-otp .auth-tagline {
-        background: rgba(59, 130, 246, 0.12);
-        color: #2563eb;
-    }
-    .auth-card-register .auth-tagline {
-        background: rgba(249, 115, 22, 0.12);
-        color: #f97316;
-    }
-    .auth-head h6 {
-        margin: 0;
-        font-size: 1.3rem;
-        font-weight: 700;
-        color: #0f2d1e;
-    }
-    .auth-head p {
-        margin: 0;
-        font-size: 0.95rem;
-        color: #4f574d;
-        line-height: 1.6;
-    }
-    .auth-badges {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.55rem;
-    }
-    .auth-badges span {
-        padding: 0.22rem 0.9rem;
-        border-radius: 999px;
-        background: rgba(34, 197, 94, 0.1);
-        color: #0f5132;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.02em;
-    }
-
-    .auth-form .form-control {
-        border-radius: 14px;
-        border: 1px solid rgba(15, 45, 30, 0.14);
-        padding: 0.9rem 1rem;
-        background: rgba(248, 250, 248, 0.9);
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .auth-form .form-control:focus {
-        border-color: rgba(34, 197, 94, 0.6);
-        box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
-    }
-
-    .btn-success {
-        background: linear-gradient(135deg, #16a34a, #22c55e);
-        border: none;
-        font-weight: 600;
-    }
-    .btn-success:hover {
-        box-shadow: 0 14px 28px rgba(16, 185, 129, 0.36);
-    }
-
-    .btn-google {
-        border: 1px solid rgba(15, 30, 25, 0.12);
-        padding: 0.85rem 1rem;
-        font-weight: 600;
-        background: #ffffff;
-        color: #0f2d1e;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-    .btn-google:hover {
-        border-color: rgba(15, 30, 25, 0.32);
-        box-shadow: 0 14px 30px rgba(15, 30, 25, 0.08);
-    }
-
-    .auth-divider {
-        position: relative;
-        text-align: center;
-        margin: 0.3rem 0 0.6rem;
-    }
-    .auth-divider::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 50%;
-        height: 1px;
-        background: rgba(15, 45, 35, 0.1);
-    }
-    .auth-divider span {
-        position: relative;
-        background: #ffffff;
-        padding: 0 0.65rem;
-        font-size: 0.78rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        color: #6b7a6d;
-        letter-spacing: 0.08em;
-    }
-
-    .form-check-label a {
-        color: #16a34a;
-        font-weight: 600;
-        text-decoration: none;
-    }
-
-    .auth-note {
-        border-radius: 16px;
-        background: #10281c;
-        color: #ffffff;
-        padding: 0.85rem 1rem;
-        font-size: 0.82rem;
-        line-height: 1.5;
-    }
-
-    .otp-inputs {
-        display: flex;
-        justify-content: center;
-        gap: 0.55rem;
-    }
     .otp-inputs input {
-        width: 46px;
-        height: 56px;
-        border-radius: 14px;
-        text-align: center;
-        font-size: 1.15rem;
-        font-weight: 600;
-        border: 1px solid rgba(99, 102, 241, 0.28);
-        background: rgba(248, 250, 255, 0.9);
+        width: 42px;
+        height: 52px;
     }
-    .auth-card-otp .otp-inputs input:focus {
-        border-color: rgba(14, 165, 233, 0.6);
-        box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.18);
-    }
-
-    .auth-phone {
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        color: #0b3b2a;
-    }
-    .auth-card-otp .auth-phone {
-        color: #1d4ed8;
-    }
-
-    .role-btn {
-        border-radius: 999px;
-        border: 1px solid rgba(15, 45, 30, 0.14);
-        padding: 0.55rem 1.25rem;
-        font-weight: 600;
-        color: #0f2d1e;
-        background: rgba(248, 250, 248, 0.9);
-    }
-    .btn-check:checked + .role-btn {
-        background: linear-gradient(135deg, #16a34a, #22c55e);
-        color: #ffffff;
-        border-color: transparent;
-        box-shadow: 0 12px 24px rgba(16, 185, 129, 0.32);
-    }
-
-    .auth-card-register .btn-success {
-        background: linear-gradient(135deg, #f97316, #fb923c);
-    }
-    .auth-card-register .btn-success:hover {
-        box-shadow: 0 14px 28px rgba(249, 115, 22, 0.32);
-    }
-
-    .auth-card-register .form-control:focus {
-        border-color: rgba(249, 115, 22, 0.6);
-        box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.18);
-    }
-
-    .auth-card-otp .btn-link {
-        color: #2563eb;
-        font-weight: 600;
-        text-decoration: none;
-    }
-
-    @media (max-width: 575.98px) {
-        #loginModal .modal-header {
-            padding: 1.2rem 1.3rem 0;
-        }
-        #loginModal .modal-body {
-            padding: 1rem 1.3rem 1.8rem;
-        }
-        .auth-card {
-            padding: 1.6rem 1.4rem;
-            border-radius: 20px;
-        }
-        .otp-inputs input {
-            width: 42px;
-            height: 52px;
-        }
-    }
+}
 </style>
 
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -317,7 +347,8 @@
                             <i class="bi bi-google"></i>
                             Continue with Google
                         </button>
-                        <p class="text-center" style="font-size:0.85rem; color:#4d5e52; margin:0.85rem 0 0.7rem;">We send a one-time passcode to confirm it’s really you before granting access.</p>
+                        <p class="text-center" style="font-size:0.85rem; color:#4d5e52; margin:0.85rem 0 0.7rem;">We
+                            send a one-time passcode to confirm it’s really you before granting access.</p>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="agreeTerms" checked required />
                             <label class="form-check-label" for="agreeTerms" style="font-size: 0.8rem;">
@@ -326,7 +357,8 @@
                         </div>
                     </form>
                     <div class="auth-note rounded-3">
-                        Phone out of reach? <strong>Tap “Continue”</strong> and our concierge team will guide you through email verification.
+                        Phone out of reach? <strong>Tap “Continue”</strong> and our concierge team will guide you
+                        through email verification.
                     </div>
                 </div>
             </div>
@@ -336,7 +368,8 @@
                     <div class="auth-head">
                         <span class="auth-tagline rounded-3">Finish setup</span>
                         <h6>Tell us about you</h6>
-                        <p>Unlock curated listings, alerts, and concierge assistance tailored to your buying journey.</p>
+                        <p>Unlock curated listings, alerts, and concierge assistance tailored to your buying journey.
+                        </p>
                     </div>
                     <form id="registerForm" class="auth-form">
                         <div id="registerError" class="alert alert-danger d-none"></div>
@@ -344,26 +377,16 @@
                             <input type="text" name="full_name" class="form-control" placeholder="Full Name" required />
                         </div>
                         <div class="mb-3">
-                            <input type="email" name="email" class="form-control" placeholder="Email Address" required />
+                            <input type="email" name="email" class="form-control" placeholder="Email Address"
+                                required />
                         </div>
                         <div class="mb-3">
-                            <input type="tel" name="phone_number" class="form-control" placeholder="Phone Number" required
-                                readonly />
+                            <input type="tel" name="phone_number" class="form-control" placeholder="Phone Number"
+                                required readonly />
                         </div>
                         <div class="mb-3">
-                            <input type="text" name="city" class="form-control" placeholder="Enter Your City" required />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="servicePreferenceSelect">Select a concierge service</label>
-                            <select class="form-select form-control" id="servicePreferenceSelect" name="service" required>
-                                <option value="" selected disabled>Select a service</option>
-                                <option value="home_loan_assistance">Home Loan Assistance</option>
-                                <option value="legal_documentation">Legal &amp; Documentation Services</option>
-                                <option value="vastu_consultation">Vastu Consultation</option>
-                                <option value="home_painting_cleaning">Home Painting &amp; Cleaning</option>
-                                <option value="repairs_utilities">Plumbing, Electrical &amp; Carpentry</option>
-                                <option value="construction_renovation">Home Construction &amp; Renovation</option>
-                            </select>
+                            <input type="text" name="city" class="form-control" placeholder="Enter Your City"
+                                required />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">You are signing in as</label>
@@ -379,7 +402,23 @@
                                 <input type="radio" class="btn-check" name="role" id="roleBuyer" value="buyer"
                                     autocomplete="off">
                                 <label class="btn role-btn" for="roleBuyer">Buyer</label>
+
+                                <input type="radio" class="btn-check" name="role" id="roleService" value="service"
+                                    autocomplete="off">
+                                <label class="btn role-btn" for="roleService">Service</label>
                             </div>
+                        </div>
+                        <div class="mb-3 d-none" id="servicePreferenceGroup">
+                            <label class="form-label" for="servicePreferenceSelect">Select a concierge service</label>
+                            <select class="form-select form-control" id="servicePreferenceSelect" name="service">
+                                <option value="" selected disabled>Select a service</option>
+                                <option value="home_loan_assistance">Home Loan Assistance</option>
+                                <option value="legal_documentation">Legal &amp; Documentation Services</option>
+                                <option value="vastu_consultation">Vastu Consultation</option>
+                                <option value="home_painting_cleaning">Home Painting &amp; Cleaning</option>
+                                <option value="repairs_utilities">Plumbing, Electrical &amp; Carpentry</option>
+                                <option value="construction_renovation">Home Construction &amp; Renovation</option>
+                            </select>
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-success">Save Profile & Continue</button>
@@ -393,11 +432,12 @@
                     <div class="auth-head">
                         <span class="auth-tagline   rounded-3">Secure OTP</span>
                         <h6>Check your messages</h6>
-                        <p>Enter the 6-digit passcode we just sent to <span class="auth-phone" id="maskedNumber"></span></p>
+                        <p>Enter the 6-digit passcode we just sent to <span class="auth-phone" id="maskedNumber"></span>
+                        </p>
                     </div>
                     <div class="text-center">
                         <div id="otp" class="otp-inputs">
-                            <input type="text" maxlength="1" class="rounded-3"/>
+                            <input type="text" maxlength="1" class="rounded-3" />
                             <input type="text" maxlength="1" class="rounded-3" />
                             <input type="text" maxlength="1" class="rounded-3" />
                             <input type="text" maxlength="1" class="rounded-3" />
@@ -406,7 +446,8 @@
                         </div>
                         <div class="d-grid gap-3 mt-4">
                             <button id="validateBtn" class="btn btn-success px-4 validate">Validate</button>
-                            <button type="button" class="btn btn-link" id="backToLoginFromOTP">← Use a different number</button>
+                            <button type="button" class="btn btn-link" id="backToLoginFromOTP">← Use a different
+                                number</button>
                         </div>
                     </div>
                 </div>
@@ -433,6 +474,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const registerErrorDiv = document.getElementById('registerError');
     const backToLoginFromOTP = document.getElementById("backToLoginFromOTP");
+    const roleInputs = registerForm ? registerForm.querySelectorAll('input[name="role"]') : [];
+    const servicePreferenceGroup = document.getElementById('servicePreferenceGroup');
+    const servicePreferenceSelect = document.getElementById('servicePreferenceSelect');
 
     // --- API URLs ---
     const API_BASE_URL = 'http://localhost:8080/api/auth';
@@ -452,7 +496,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 button.dataset.originalContent = button.innerHTML;
             }
             button.disabled = true;
-            button.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>${loadingText}`;
+            button.innerHTML =
+                `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>${loadingText}`;
         } else {
             button.disabled = false;
             if (button.dataset.originalContent) {
@@ -485,6 +530,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     backToLoginFromOTP.addEventListener("click", showLogin);
+
+    function toggleServicePreference() {
+        if (!registerForm || !servicePreferenceGroup || !servicePreferenceSelect) {
+            return;
+        }
+        const activeRole = registerForm.querySelector('input[name="role"]:checked');
+        const shouldShowService = activeRole && activeRole.value === 'service';
+        if (shouldShowService) {
+            servicePreferenceGroup.classList.remove('d-none');
+            servicePreferenceSelect.setAttribute('required', 'required');
+        } else {
+            servicePreferenceGroup.classList.add('d-none');
+            servicePreferenceSelect.value = '';
+            servicePreferenceSelect.removeAttribute('required');
+        }
+    }
+
+    roleInputs.forEach(input => input.addEventListener('change', toggleServicePreference));
+    toggleServicePreference();
 
     function setupOtpInputs() {
         const inputs = document.querySelectorAll("#otp > input");
@@ -626,10 +690,14 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
         const selectedService = formData.get('service');
-        if (!selectedService) {
-            registerErrorDiv.textContent = 'Please select a concierge service.';
-            registerErrorDiv.classList.remove('d-none');
-            return;
+        if (selectedRole.value === 'service') {
+            if (!selectedService) {
+                registerErrorDiv.textContent = 'Please select a concierge service.';
+                registerErrorDiv.classList.remove('d-none');
+                return;
+            }
+        } else {
+            formData.delete('service');
         }
         formData.set('role', selectedRole.value);
         const userData = Object.fromEntries(formData.entries());
@@ -647,10 +715,12 @@ document.addEventListener("DOMContentLoaded", function() {
             const result = await response.json();
 
             if (!response.ok) {
-                const errorHtml = Object.values(result.messages).join('<br>');
+                const messages = result && typeof result === 'object' ? result.messages || result.errors : null;
+                const messageList = messages && typeof messages === 'object' ? Object.values(messages).filter(Boolean) : [];
+                const errorHtml = messageList.length ? messageList.join('<br>') : (result && result.message ? result.message : 'Please fix the errors above.');
                 registerErrorDiv.innerHTML = errorHtml;
                 registerErrorDiv.classList.remove('d-none');
-                throw new Error('Please fix the errors above.');
+                throw new Error(errorHtml || 'Please fix the errors above.');
             }
 
             await Swal.fire({

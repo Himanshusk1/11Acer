@@ -7,6 +7,7 @@ if (! function_exists('generate_public_id')) {
             'agent'      => 'AG',
             'owner'      => 'OW',
             'individual' => 'IN',
+            'service'    => 'SV',
         ];
 
         $normalized = strtolower(trim($role ?? ''));

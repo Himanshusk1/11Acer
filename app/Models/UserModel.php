@@ -10,7 +10,7 @@ class UserModel extends Model
     protected $primaryKey = 'user_id';  // ✅ Correct column name
     protected $allowedFields = [
         'full_name', 'email', 'phone_number', 'city', 'role', 'public_id',
-        'service_preference',
+        'service_type',
         'created_at', 'updated_at',
     ];
     protected $useTimestamps = true;

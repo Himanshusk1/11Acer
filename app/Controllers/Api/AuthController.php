@@ -55,13 +55,18 @@ class AuthController extends ResourceController
             $phoneRule = "required|min_length[10]|max_length[20]|is_unique[users.phone_number,user_id,{$userId}]";
         }
 
+        $rawRole = strtolower(trim((string) ($input['role'] ?? '')));
+        $isServiceRole = $rawRole === 'service';
+        $serviceRuleBase = 'in_list[' . implode(',', array_keys($this->serviceOptions)) . ']';
+        $serviceRule = ($isServiceRole ? 'required' : 'permit_empty') . '|' . $serviceRuleBase;
+
         $rules = [
             'full_name'    => 'required|min_length[3]|max_length[255]',
             'email'        => $emailRule,
             'phone_number' => $phoneRule,
             'city'         => 'required|max_length[100]',
-            'role'         => 'required|in_list[owner,agent,buyer]',
-            'service'      => 'required|in_list[' . implode(',', array_keys($this->serviceOptions)) . ']',
+            'role'         => 'required|in_list[owner,agent,buyer,service]',
+            'service'      => $serviceRule,
         ];
 
         $validation = \Config\Services::validation();
@@ -73,13 +78,14 @@ class AuthController extends ResourceController
         $role = $this->normalizeRole($input['role']);
         $serviceKey = $input['service'] ?? '';
         $serviceLabel = $this->serviceOptions[$serviceKey] ?? null;
+        $serviceType = $role === 'service' ? $serviceLabel : null;
         $data = [
             'full_name'    => $input['full_name'],
             'email'        => $input['email'],
             'phone_number' => $input['phone_number'],
             'city'         => $input['city'],
             'role'         => $role,
-            'service_preference' => $serviceLabel,
+            'service_type' => $serviceType,
         ];
 
         $publicId = '';
@@ -108,6 +114,7 @@ class AuthController extends ResourceController
             $this->syncReferralCode($userId, $publicId);
         }
         $user['role'] = $this->normalizeRole($user['role']);
+        $serviceType = $user['role'] === 'service' ? ($user['service_type'] ?? null) : null;
 
         session()->set([
             'isLoggedIn' => true,
@@ -117,7 +124,7 @@ class AuthController extends ResourceController
             'email'      => $user['email'],
             'phone_number' => $user['phone_number'],
             'public_id'  => $user['public_id'],
-            'service_preference' => $user['service_preference'] ?? null,
+            'service_type' => $serviceType,
         ]);
 
         return $this->respondCreated([
@@ -126,7 +133,7 @@ class AuthController extends ResourceController
             'user_id'      => $userId,
             'public_id'    => $user['public_id'],
             'redirect_url' => role_dashboard_path($user['role']),
-            'service_preference' => $user['service_preference'] ?? null,
+            'service_type' => $serviceType,
         ]);
     }
 
@@ -247,6 +254,7 @@ class AuthController extends ResourceController
         }
 
         $user['role'] = $this->normalizeRole($user['role']);
+        $serviceType = $user['role'] === 'service' ? ($user['service_type'] ?? null) : null;
 
         session()->set([
             'isLoggedIn' => true,
@@ -256,7 +264,7 @@ class AuthController extends ResourceController
             'email'      => $user['email'],
             'phone_number' => $user['phone_number'],
             'public_id'  => $user['public_id'],
-            'service_preference' => $user['service_preference'] ?? null,
+            'service_type' => $serviceType,
         ]);
 
         $otpModel->delete($record['otp_id']);
@@ -276,7 +284,7 @@ class AuthController extends ResourceController
                 'role'         => $user['role'],
                 'public_id'    => $user['public_id'],
                 'city'         => $user['city'],
-                'service_preference' => $user['service_preference'] ?? null,
+                'service_type' => $serviceType,
             ],
         ];
 
@@ -305,7 +313,7 @@ class AuthController extends ResourceController
     {
         $apiUrl = 'https://int.chatway.in/api/send-msg';
         $username = getenv('CHATWAY_USERNAME') ?: '36Brokinghub';
-        $token = getenv('CHATWAY_TOKEN') ?: 'bEQwd0s4NUUrMVFYMmtnOHhmU3dIQT08';
+        $token = getenv('CHATWAY_TOKEN') ?: 'fkfdfjdfjkdfjdfdsfjk';
 
         $verifySslEnv = getenv('CHATWAY_VERIFY_SSL');
         $verifySsl = $verifySslEnv === false
@@ -390,6 +398,7 @@ class AuthController extends ResourceController
             'admin'      => 'admin',
             'individual' => 'individual',
             'broker'     => 'agent',
+            'service'    => 'service',
         ];
 
         return $map[$role] ?? 'buyer';
@@ -397,12 +406,17 @@ class AuthController extends ResourceController
 
     protected function requiresProfileCompletion(array $user): bool
     {
-        $required = ['full_name', 'email', 'city', 'role', 'service_preference'];
+        $required = ['full_name', 'email', 'city', 'role'];
 
         foreach ($required as $field) {
             if (empty($user[$field])) {
                 return true;
             }
+        }
+
+        $normalizedRole = $this->normalizeRole($user['role'] ?? '');
+        if ($normalizedRole === 'service' && empty($user['service_type'])) {
+            return true;
         }
 
         return false;
@@ -430,6 +444,7 @@ class AuthController extends ResourceController
             'admin'      => 'AD',
             'owner'      => 'AG',
             'broker'     => 'AG',
+            'service'    => 'SV',
         ];
 
         $normalized = strtolower(trim($role));
