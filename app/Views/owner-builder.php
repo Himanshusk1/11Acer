@@ -167,12 +167,6 @@ $page_title = 'Owner & Builder Solutions | 11 Acer';
             z-index: 1;
         }
 
-        @media (max-width: 991px) {
-            main {
-                padding-top: 72px;
-            }
-        }
-
         @media (max-width: 767px) {
             .hero-section {
                 text-align: center;

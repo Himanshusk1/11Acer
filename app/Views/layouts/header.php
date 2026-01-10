@@ -92,7 +92,7 @@
         <button class="navbar-toggler shadow-none border-0"
                 type="button"
                 data-bs-toggle="offcanvas"
-                data-bs-target="#mainNavbar">
+                data-bs-target="#   Navbar">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -121,7 +121,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link <?= ($active_page ?? '')=='agents'?'active':'' ?>" href="<?= site_url('services') ?>">Agents / Broker</a>
+                        <a class="nav-link <?= ($active_page ?? '')=='agents'?'active':'' ?>" href="<?= site_url('agents-broker') ?>">Agents / Broker</a>
                     </li>
 
                     <li class="nav-item">
