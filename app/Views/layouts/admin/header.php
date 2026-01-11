@@ -5,7 +5,7 @@ $defaultAvatar = base_url('images/36_profile.png');
 ?>
 
 <nav class="sidebar" id="admin-sidebar">
-    <h3 class="sidebar-header">36Broking<span>.</span></h3>
+    <h3 class="sidebar-header">11 Acer</h3>
     <?php if ($layoutVariant === 'properties'): ?>
         <ul class="nav flex-column">
             <li class="nav-item">

@@ -1,6 +1,6 @@
 <aside class="sidebar" id="user-sidebar">
     <div class="sidebar-fixed">
-        <div class="sidebar-header">36Broking<span>Hub</span></div>
+        <div class="sidebar-header">11 Acer</div>
         <div class="sidebar-profile d-flex align-items-center gap-3">
             <div class="sidebar-profile-avatar"><?= esc($initials) ?></div>
             <div>
